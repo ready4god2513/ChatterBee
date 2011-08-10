@@ -1,1 +1,34 @@
-Welcome to the planet!
+<div id="manuscript"></div>
+
+<input type="text" name="message" id="message" placeholder="Say something..." required="required" />
+
+
+<div pub-key="pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e" sub-key="sub-7e2e745c-c38c-11e0-a0a5-53ec83638759" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+<script>
+	(function(){
+
+	    var box = PUBNUB.$("manuscript"), input = PUBNUB.$("message"), channel = "chatterbee-chat";
+	
+		PUBNUB.subscribe({
+		    channel  : channel,
+		    callback : function(text) { 
+				box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br/>' + box.innerHTML; 
+			}
+		});
+	
+		PUBNUB.bind( 'keyup', input, function(e) {
+		    if ((e.keyCode || e.charCode) === 13)
+			{
+				PUBNUB.publish({
+			        channel : channel, 
+					message : input.value
+			    });
+			
+				input.value = "";
+			}
+			
+		});
+
+	})();
+</script>

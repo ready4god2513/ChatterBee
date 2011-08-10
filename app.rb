@@ -1,7 +1,7 @@
 require "sinatra/base"
 
 
-class ChatterBox < Sinatra::Base
+class ChatterBee < Sinatra::Base
   
   require "sass"
   require "erb"

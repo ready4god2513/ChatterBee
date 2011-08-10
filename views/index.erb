@@ -25,13 +25,15 @@
 				$("#manuscript").append("<li>" + message[i] + "</li>");
 			}
 
-		} );
+			scroll_to_bottom();
+		});
 	
 		PUBNUB.subscribe({
 		    channel  : channel,
 		    callback : function(text) 
 			{
 				$("#manuscript").append("<li>" + text + "</li>");
+				scroll_to_bottom();
 			}
 		});
 		
@@ -51,4 +53,10 @@
 		});
 
 	});
+	
+	
+	function scroll_to_bottom()
+	{
+		$("#manuscript").animate({ scrollTop: $("#manuscript").attr("scrollHeight") }, 3000);
+	}
 </script>

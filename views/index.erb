@@ -1,3 +1,4 @@
+<h1>Room # <%= @connection %></h1>
 <ul id="manuscript"></ul>
 
 <input type="text" name="message" id="message" placeholder="Say something..." required="required" />
@@ -7,7 +8,7 @@
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
 	$(function(){
-		var channel = "chatterbee-chatter";
+		var channel = "chatterbee-chatter-room-<%= @connection %>";
 		var manuscript = $("#manuscript");
 		var message = $("#message");
 	

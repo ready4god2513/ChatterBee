@@ -20,27 +20,22 @@ function Chatter(channel, user)
 				$this.parseMessage(message);
 			}
 		});
+		
+		
+		$this.loadHistory();
+		$this.postMessage($this.user + " has joined the room.", "joined");
 	};
 	
 	
 	$this.leave = function()
 	{
 		console.log("Leaving room: " + $this.chatroom + " on channel: " + $this.channel);
-		
-		PUBNUB.publish({
-	        channel : $this.channel, 
-			message : {
-				message: "left session",
-				user: user,
-				uuid: guid()
-			}
-	    });
+		$this.postMessage($this.user + " has left the chat.", "left");
 	};
 	
 	
 	$this.postMessage = function(message, status)
 	{
-		
 		console.log("Posted: " + message + " to: " + $this.channel);
 		
 		PUBNUB.publish({
@@ -74,10 +69,23 @@ function Chatter(channel, user)
 	};
 	
 	
-	$this.parseMessage = function(message)
+	$this.parseMessage = function(message, status)
 	{
-		console.log("Parsing message: " + message);
-		$this.chatroom.addLine(message.message);
+		console.log("Parsing message: " + message + " with a status of: " + status);
+		
+		if(status == "left")
+		{
+			$this.chatroom.addLine("<strong class='left'>" + message.message + "</strong>");
+		}
+		else if(status == "joined")
+		{
+			$this.chatroom.addLine("<strong class='joined'>" + message.message + "</strong>");
+		}
+		else
+		{
+			$this.chatroom.addLine(message.message);
+		}
+		
 	};
 	
 	
@@ -130,7 +138,6 @@ function Guid()
 var chatroom = new Chatroom($("#manuscript"));
 var chatter = new Chatter(channel, user);
 chatter.joinRoom(chatroom);
-chatter.loadHistory();
 
 var say = $("#say-something");
 say.bind("keyup", function(e){

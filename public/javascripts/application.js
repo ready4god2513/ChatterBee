@@ -27,10 +27,10 @@ function Chatter(channel, user)
 	};
 	
 	
-	$this.leave = function()
+	$this.leaveRoom = function()
 	{
 		console.log("Leaving room: " + $this.chatroom + " on channel: " + $this.channel);
-		$this.postMessage($this.user + " has left the chat.", "left");
+		return $this.postMessage($this.user + " has left the chat.", "left");
 	};
 	
 	
@@ -113,7 +113,7 @@ function Chatroom(elem)
 	
 	$this.scrollDown = function()
 	{
-		$this.elem.animate({ scrollTop: $this.elem.prop("scrollHeight") }, 1000);
+		$this.elem.animate({ scrollTop: $this.elem.prop("scrollHeight") }, 0);
 	};
 		
 }
@@ -149,3 +149,9 @@ say.bind("keyup", function(e){
 		say.val("");
 	}
 });
+
+
+window.onbeforeunload = function()
+{
+	return chatter.leaveRoom();
+}

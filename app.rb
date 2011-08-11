@@ -24,6 +24,11 @@ class ChatterBee < Sinatra::Base
     erb :index
   end
   
+  get "/room/:id" do |id|
+    @connection = id
+    erb :index
+  end
+  
   get "/leave/:id" do |id|
     @room.leave!(id)
   end

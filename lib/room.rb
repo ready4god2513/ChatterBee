@@ -6,7 +6,7 @@ class Room
   
   
   def initialize
-    @redis = Redis.new
+    @redis = Redis.new("redis://redistogo:60817b9a83a996948cfb124fd58c0f10@angler.redistogo.com:9457/")
   end
   
   

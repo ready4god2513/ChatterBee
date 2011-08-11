@@ -37,8 +37,4 @@ class ChatterBee < Sinatra::Base
     scss :style
   end
   
-  get "/application.js" do
-    coffee :application
-  end
-  
 end

@@ -30,6 +30,7 @@ function Chatter(channel, user)
 	$this.leaveRoom = function()
 	{
 		console.log("Leaving room: " + $this.chatroom + " on channel: " + $this.channel);
+		PUBNUB.unsubscribe({ channel : $this.channel });
 		return $this.postMessage($this.user + " has left the chat.", "left");
 	};
 	
@@ -95,6 +96,21 @@ function Chatter(channel, user)
 		return guid.generate();
 	};
 	
+	
+	$this.numberOfChatters = function()
+	{
+		PUBNUB.analytics({
+		    channel : $this.channel,  // OPTIONAL
+		    duration : 0,           // Minutes Offset
+		    ago      : 0,            // Minutes Ago
+		    limit    : 100,          // Aggregation Limit
+		    callback : function(analytics) 
+			{
+		        console.log( "Analytics:", analytics )
+		    }
+		});
+	};
+	
 }
 
 
@@ -138,6 +154,7 @@ function Guid()
 var chatroom = new Chatroom($("#manuscript"));
 var chatter = new Chatter(channel, user);
 chatter.joinRoom(chatroom);
+chatter.numberOfChatters();
 
 var say = $("#say-something");
 say.bind("keyup", function(e){

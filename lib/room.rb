@@ -25,7 +25,7 @@ class Room
   
   
   def new_room
-    room = Random.new.rand(0...999)
+    room = rand(36**8).to_s(36)
     @redis.rpush ROOM_NAME, room
     room
   end

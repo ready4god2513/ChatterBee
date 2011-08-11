@@ -1,6 +1,6 @@
 require "bundler/setup"
 require "sinatra/base"
-require "sinatra/redis"
+require ::File.expand_path("lib/room")
 
 
 class ChatterBee < Sinatra::Base
@@ -15,20 +15,17 @@ class ChatterBee < Sinatra::Base
   require "coffee-script"
   
   before do
-    @redis = Redis.new
+    @room = Room.new
   end
     
   
   get "/" do
-    @connection = Random.new.rand(0...999)
-    @redis.rpush "open_chat", @connection
-    
-    @openings = @redis.llen "open_chat"
+    @connection = @room.join
     erb :index
   end
   
   get "/leave/:id" do |id|
-    @redis.lrem "open_chat", id
+    @room.leave!(id)
   end
   
   get "/style.css" do

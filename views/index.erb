@@ -36,6 +36,12 @@
 		});
 		
 		
+		window.onbeforeunload = function()
+		{
+			$.get("/leave/<%= @connection %>");
+		}
+		
+		
 		function scroll_to_bottom(elem)
 		{
 			elem.animate({ scrollTop: elem.prop("scrollHeight") }, 1000);

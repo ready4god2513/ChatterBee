@@ -1,4 +1,4 @@
-require "rack/cache"
+require "bundler/setup"
 require "sinatra/base"
 
 
@@ -12,12 +12,6 @@ class ChatterBee < Sinatra::Base
   require "sass"
   require "erb"
   require "coffee-script"
-  
-  use Rack::Cache
-  
-  before do
-    cache_control :public, :max_age => 36000
-  end
     
   
   get "/" do

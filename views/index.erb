@@ -7,56 +7,42 @@
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
 	$(function(){
-		var channel = "chatterbee-chat";
-		
-		PUBNUB.history({
-		    // Set channel to 'example'
-		    channel : channel,
-
-		    // Set limit of returned
-		    limit : 100
-
-		// Set Callback Function when History Returns
-		}, function(messages) {
-
-		    // Show History
-		    for(i in message)
-			{
-				$("#manuscript").append("<li>" + message[i] + "</li>");
-			}
-
-			scroll_to_bottom();
-		});
+		var channel = "chatterbee-chatter";
+		var manuscript = $("#manuscript");
+		var message = $("#message");
 	
 		PUBNUB.subscribe({
 		    channel  : channel,
 		    callback : function(text) 
 			{
-				$("#manuscript").append("<li>" + text + "</li>");
-				scroll_to_bottom();
+				manuscript.append("<li>" + text + "</li>");
+				scroll_to_bottom(manuscript);
 			}
 		});
 		
 		
-		$("#message").bind("keyup", function(e){
+		message.bind("keyup", function(e){
 			var code = (e.keyCode ? e.keyCode : e.which);
 			
 			if(code == 13)
 			{
 				PUBNUB.publish({
 			        channel : channel, 
-					message : $("#message").val()
+					message : message.val()
 			    });
 			
-				$("#message").val("");
+				message.val("");
 			}
 		});
+		
+		
+		function scroll_to_bottom(elem)
+		{
+			elem.animate({ scrollTop: elem.prop("scrollHeight") }, 1000);
+		}
 
 	});
 	
 	
-	function scroll_to_bottom()
-	{
-		$("#manuscript").animate({ scrollTop: $("#manuscript").attr("scrollHeight") }, 3000);
-	}
+	
 </script>

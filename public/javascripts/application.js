@@ -31,6 +31,10 @@ var chatter = new function()
 		    callback : function(message) 
 			{
 				self.parseMessage(message);
+				if(message.user != self.user && !document.hasFocus)
+				{
+					self.updatePageTitle("jegit...new message...");
+				}
 			}
 		});
 		
@@ -80,6 +84,12 @@ var chatter = new function()
 				self.parseMessage(messages[i]);
 			}
 		});
+	},
+	
+	
+	self.updatePageTitle = function(message)
+	{
+		$(document).attr("title", message);
 	},
 	
 	
@@ -192,4 +202,9 @@ say.bind("keyup", function(e){
 window.onbeforeunload = function()
 {
 	return chatter.leaveRoom();
+}
+
+window.onfocus = function()
+{
+	chatter.updatePageTitle("jegit: Chat Freely");
 }

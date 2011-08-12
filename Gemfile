@@ -9,6 +9,7 @@ gem "resque"
 gem "sinatra-redis"
 gem "thin"
 gem "geocoder"
+gem "oauth2"
 
 group :development do
 	gem "capistrano"

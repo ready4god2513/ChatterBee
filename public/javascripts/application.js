@@ -23,7 +23,7 @@ function Chatter(channel, user)
 		
 		
 		$this.loadHistory();
-		$this.postMessage($this.user + " has joined the room.", "joined");
+		$this.postMessage("has joined the room.", "joined");
 	};
 	
 	
@@ -31,7 +31,7 @@ function Chatter(channel, user)
 	{
 		console.log("Leaving room: " + $this.chatroom + " on channel: " + $this.channel);
 		PUBNUB.unsubscribe({ channel : $this.channel });
-		return $this.postMessage($this.user + " has left the chat.", "left");
+		return $this.postMessage("has left the chat.", "left");
 	};
 	
 	
@@ -70,21 +70,23 @@ function Chatter(channel, user)
 	};
 	
 	
-	$this.parseMessage = function(message, status)
+	$this.parseMessage = function(message)
 	{
+		
+		message.message = message.message.replace(/<.*?>/g, '');
 		console.log("Parsing message: " + message + " with a status of: " + status);
 		
-		if(status == "left")
+		if(message.status == "left")
 		{
-			$this.chatroom.addLine("<strong class='left'>" + message.message + "</strong>");
+			$this.chatroom.addLine("<span class='left'>" + message.user + " " + message.message + "</span>");
 		}
-		else if(status == "joined")
+		else if(message.status == "joined")
 		{
-			$this.chatroom.addLine("<strong class='joined'>" + message.message + "</strong>");
+			$this.chatroom.addLine("<span class='joined'>" + message.user + " " + message.message + "</span>");
 		}
 		else
 		{
-			$this.chatroom.addLine(message.message);
+			$this.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message);
 		}
 		
 	};

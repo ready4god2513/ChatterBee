@@ -1,6 +1,7 @@
 <h1>Room # <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@connection}" %>"><%= @connection%></a></h1>
 <ul id="manuscript"></ul>
 
+<input type="text" name="username" id="username" placeholder="username" required="required" />
 <input type="text" name="say-something" id="say-something" placeholder="Say something..." required="required" />
 
 
@@ -8,5 +9,5 @@
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
 	var channel = "chatterbee-chatter-room-<%= @connection %>";
-	var user = "<%= request.cookies["username"] || "Me" %>";
+	var user = "<%= request.cookies["username"] || "Anonymous" %>";
 </script>

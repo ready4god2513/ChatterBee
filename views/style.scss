@@ -6,20 +6,29 @@ body
 	margin:50px auto;
 }
 
-#say-something, #manuscript
+#say-something, #manuscript, #username
 {
 	background:#fff;
 	border:1px solid #e8e8e8;
 	font-size:1.3em;
 	padding:10px;
 	margin:50px 0;
-	min-width:90%;
-	max-width:100%;
+}
+
+#say-something
+{
+	width:80%;
+}
+
+#username
+{
+	width:15%;
 }
 
 #manuscript
 {
-	
+	min-width:90%;
+	max-width:100%;
 	margin:50px 0 0 0;
 	min-height:300px;
 	max-height:500px;
@@ -28,10 +37,32 @@ body
 	li
 	{
 		border-bottom:1px solid #f8f8f8;
-		color:#222;
+		color:#333;
+		font-size:0.9em;
 		list-style:none;
 		margin:5px;
 		padding:5px;
+		
+		strong
+		{
+			color:#666;
+			display:inline-block;
+			font-weight:normal;
+			margin-right:10px;
+			
+			&.user
+			{
+				color:#0095B6;
+			}
+		}
+		
+		span
+		{
+			color:#ccc;
+			font-weight:normal;
+		}
+		
+		
 	}
 	
 	.stranger

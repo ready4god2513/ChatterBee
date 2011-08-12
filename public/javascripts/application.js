@@ -1,7 +1,6 @@
 var chatter = new function() 
 {
 	
-	
 	var self = this;
 	self.chatroom = null;
 	self.user = null;

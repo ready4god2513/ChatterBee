@@ -9,3 +9,5 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 server "173.255.209.57", :app, :web, :db, primary: true
+
+set :deploy_to, "/sites/brandon/jegit.com"

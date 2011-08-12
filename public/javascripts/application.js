@@ -182,7 +182,7 @@ var say = $("#say-something");
 say.bind("keyup", function(e){
 	var code = (e.keyCode ? e.keyCode : e.which);
 
-	if(code == 13)
+	if(code == 13 && say.val() != "")
 	{
 		chatter.postMessage(say.val());
 		say.val("");

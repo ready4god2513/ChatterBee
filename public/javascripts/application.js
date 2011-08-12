@@ -88,7 +88,7 @@ var chatter = new function()
 		$(document).attr("title", message);
 		setTimeout(function(){
 			$(document).attr("title", "jegit: Chat Freely");
-		}, 2500);
+		}, 4000);
 	},
 	
 	

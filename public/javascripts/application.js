@@ -30,10 +30,7 @@ var chatter = new function()
 		    callback : function(message) 
 			{
 				self.parseMessage(message);
-				if(message.user != self.user && !document.hasFocus)
-				{
-					self.updatePageTitle("jegit...new message...");
-				}
+				self.updatePageTitle("new message from " + message.user);
 			}
 		});
 		
@@ -89,6 +86,9 @@ var chatter = new function()
 	self.updatePageTitle = function(message)
 	{
 		$(document).attr("title", message);
+		setTimeout(function(){
+			$(document).attr("title", "jegit: Chat Freely");
+		}, 2500);
 	},
 	
 	
@@ -201,9 +201,4 @@ say.bind("keyup", function(e){
 window.onbeforeunload = function()
 {
 	return chatter.leaveRoom();
-}
-
-window.onfocus = function()
-{
-	chatter.updatePageTitle("jegit: Chat Freely");
 }

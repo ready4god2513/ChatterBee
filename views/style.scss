@@ -3,7 +3,23 @@
 body
 {
 	background:#f8f8f8;
+	font-family: 'Jura', serif;
 	margin:50px auto;
+	
+	h1
+	{
+		font-family: 'Permanent Marker', serif;
+		
+		span
+		{
+			color:#FF1493;
+		}
+	}
+}
+
+a
+{
+	color:#1E90FF !important;
 }
 
 #say-something, #manuscript, #username

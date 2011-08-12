@@ -25,9 +25,13 @@ class Room
   
   
   def new_room
-    room = "#{Forgery(:name).company_name}-#{Random.new.rand(1..999)}"
+    room = generate_room_name
     @redis.rpush ROOM_NAME, room
     room
+  end
+  
+  def generate_room_name
+    "#{Forgery(:name).company_name}-#{Random.new.rand(1..999)}"
   end
   
   

@@ -24,15 +24,22 @@
 		
 	</header>
 	<div id="main" role="main" class="row">
-		<%= yield %>
+		<div class="ninecol">
+			<%= yield %>
+		</div>
+		<div class="twocol" id="proms">
+			<fb:like href="http://jegit.com" send="true" layout="button_count" width="320" show_faces="false" action="like" font=""></fb:like>
+		</div>
 	</div>
-	<footer class="row">
-		<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=261061570588802&amp;xfbml=1"></script><fb:like href="http://jegit.com" send="true" layout="button_count" width="320" show_faces="false" action="like" font=""></fb:like>
-		<a href="/privacy">Privacy Policy</a>
+	<footer class="row" id="footer">
+		<div class="ninecol">
+			<a href="http://pubnub.com?ref=jegit.com"><img src="/pubnub.png" alt="Powered by Pubnub"/></a>
+			<a href="/privacy">Privacy Policy</a>
+		</div>
 	</footer>
 </div> <!--! end of #container -->
 
-
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=261061570588802&amp;xfbml=1"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
 

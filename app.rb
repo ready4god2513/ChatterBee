@@ -2,6 +2,8 @@ require "bundler/setup"
 require "sinatra/base"
 require "forgery"
 require "omniauth"
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 require ::File.expand_path("lib/room")
 
@@ -25,13 +27,19 @@ class ChatterBee < Sinatra::Base
   
   before do
     @room = Room.new
-    @user = session[:user] || "user-#{Forgery(:name).company_name}"
+    @user = session[:user]
+    
+    redirect to("/auth") unless auth_needed?
   end
     
   
   get "/" do
     @connection = @room.join
     erb :index
+  end
+  
+  get "/auth/?" do
+    erb :auth
   end
   
   get "/room/:id" do |id|
@@ -43,13 +51,25 @@ class ChatterBee < Sinatra::Base
     @room.leave!(id)
   end
   
+  get "/style.css" do
+      scss :style
+    end
+  
   get "/auth/facebook/callback" do
     user = request.env["omniauth.auth"]
-    raise user.inspect
+    session[:user] = user["user_info"]["nickname"]
+    session[:pic] = user["user_info"]["image"]
+    
+    redirect to("/")
   end
   
   get "/privacy" do
     erb :privacy
+  end
+  
+  
+  def auth_needed?
+    @user || request.path_info =~ /auth|\./
   end
   
 end

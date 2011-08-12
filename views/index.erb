@@ -1,10 +1,5 @@
 <h1>Room # <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@connection}" %>"><%= @connection%></a></h1>
 
-
-<% unless session[:user] %>
-	<a href="/auth/facebook">Sign in with Facebook</a>
-<% end %>
-
 <ul id="manuscript"></ul>
 
 <h3 id="chatting-as">Chatting as <span><%= @user %></span></h3>

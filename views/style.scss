@@ -2,7 +2,7 @@
 
 body
 {
-	background:#f8f8f8;
+	background:url(http://subtlepatterns.com/patterns/pinstripe.png);
 	color:#222;
 	font-family: 'Jura', serif;
 	margin:50px auto;
@@ -37,17 +37,22 @@ body
 
 a
 {
-	color:#0d98ba !important;
+	color:#0d98ba;
 	text-decoration:none;
 }
 
-#sign-in-with-facebook
+#auth-options
 {
-	background:#e8e8e8;
 	display:block;
 	font-size:1.4em;
-	margin:10px;
-	padding:10px;
+	margin:10px 0;
+	
+	a
+	{
+		color:#222;
+		display:inline-block;
+		margin:0 10px 0 0;
+	}
 }
 
 #say-something, #manuscript, #username

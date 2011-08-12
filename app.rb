@@ -29,7 +29,8 @@ class ChatterBee < Sinatra::Base
     @room = Room.new
     @user = session[:user]
     
-    save_path! && redirect to("/auth") unless auth_needed?
+    save_path! unless auth_needed?
+    redirect to("/auth") unless auth_needed?
   end
     
   

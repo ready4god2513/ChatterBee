@@ -1,7 +1,15 @@
 <h1>Room # <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@connection}" %>"><%= @connection%></a></h1>
+
+
+<% unless session[:user] %>
+	<form id="set-username" action="/auth" method="POST">
+		<input type="text" name="username" id="username" placeholder="username" required="required" />
+	</form>
+<% end %>
+
 <ul id="manuscript"></ul>
 
-<input type="text" name="username" id="username" placeholder="username" required="required" />
+<h3 id="chatting-as">Chatting as <span><%= @user %></span></h3>
 <input type="text" name="say-something" id="say-something" placeholder="Say something..." required="required" />
 
 
@@ -9,5 +17,5 @@
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
 	var channel = "chatterbee-chatter-room-<%= @connection %>";
-	var user = "<%= request.cookies["username"] || "Anonymous" %>";
+	var user = "<%= @user %>";
 </script>

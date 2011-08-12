@@ -1,62 +1,75 @@
-function Chatter(channel, user) 
+var chatter = new function() 
 {
 	
 	
-	var $this = this;
-	$this.channel = channel;
-	$this.user = user;
-	$this.chatroom = null;
+	var self = this;
+	self.chatroom = null;
+	self.user = null;
+	self.channel = null;
 	
-	$this.joinRoom = function(room)
+	
+	self.setUser = function(user)
 	{
-		$this.chatroom = room;
+		self.user = user;
+	},
+	
+	
+	self.setChannel = function(channel)
+	{
+		self.channel = channel;
+	},
+	
+	
+	self.joinRoom = function(room)
+	{
+		self.chatroom = room;
 		
-		console.log("Joined Room: " + $this.chatroom + " on channel: " + $this.channel);
+		console.log("Joined Room: " + self.chatroom + " on channel: " + self.channel);
 		
 		PUBNUB.subscribe({
-		    channel  : $this.channel,
+		    channel  : self.channel,
 		    callback : function(message) 
 			{
-				$this.parseMessage(message);
+				self.parseMessage(message);
 			}
 		});
 		
 		
-		$this.loadHistory();
-		$this.postMessage("has joined the room.", "joined");
-	};
+		self.loadHistory();
+		self.postMessage("has joined the room.", "joined");
+	},
 	
 	
-	$this.leaveRoom = function()
+	self.leaveRoom = function()
 	{
-		console.log("Leaving room: " + $this.chatroom + " on channel: " + $this.channel);
-		PUBNUB.unsubscribe({ channel : $this.channel });
-		return $this.postMessage("has left the chat.", "left");
-	};
+		console.log("Leaving room: " + self.chatroom + " on channel: " + self.channel);
+		PUBNUB.unsubscribe({ channel : self.channel });
+		return self.postMessage("has left the chat.", "left");
+	},
 	
 	
-	$this.postMessage = function(message, status)
+	self.postMessage = function(message, status)
 	{
-		console.log("Posted: " + message + " to: " + $this.channel);
+		console.log("Posted: " + message + " to: " + self.channel);
 		
 		PUBNUB.publish({
-	        channel : $this.channel, 
+	        channel : self.channel, 
 			message : {
 				message: message,
 				status: status,
-				user: $this.user,
-				uuid: $this.generateGuid()
+				user: self.user,
+				uuid: self.generateGuid()
 			}
 	    });
-	};
+	},
 	
 	
-	$this.loadHistory = function()
+	self.loadHistory = function()
 	{
-		console.log("Loading history for: " + $this.channel);
+		console.log("Loading history for: " + self.channel);
 		
 		PUBNUB.history({
-		    channel : $this.channel,
+		    channel : self.channel,
 		    limit : 100
 
 		// Set Callback Function when History Returns
@@ -64,13 +77,13 @@ function Chatter(channel, user)
 		{
 		    for(i in messages)
 			{
-				$this.parseMessage(messages[i]);
+				self.parseMessage(messages[i]);
 			}
 		});
-	};
+	},
 	
 	
-	$this.parseMessage = function(message)
+	self.parseMessage = function(message)
 	{
 		
 		message.message = message.message.replace(/<.*?>/g, '');
@@ -78,31 +91,31 @@ function Chatter(channel, user)
 		
 		if(message.status == "left")
 		{
-			$this.chatroom.addLine("<span class='left'>" + message.user + " " + message.message + "</span>");
+			self.chatroom.addLine("<span class='left'>" + message.user + " " + message.message + "</span>");
 		}
 		else if(message.status == "joined")
 		{
-			$this.chatroom.addLine("<span class='joined'>" + message.user + " " + message.message + "</span>");
+			self.chatroom.addLine("<span class='joined'>" + message.user + " " + message.message + "</span>");
 		}
 		else
 		{
-			$this.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message);
+			self.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message);
 		}
 		
-	};
+	},
 	
 	
-	$this.generateGuid = function()
+	self.generateGuid = function()
 	{
 		var guid = new Guid();
 		return guid.generate();
-	};
+	},
 	
 	
-	$this.numberOfChatters = function()
+	self.numberOfChatters = function()
 	{
 		PUBNUB.analytics({
-		    channel : $this.channel,  // OPTIONAL
+		    channel : self.channel,  // OPTIONAL
 		    duration : 0,           // Minutes Offset
 		    ago      : 0,            // Minutes Ago
 		    limit    : 100,          // Aggregation Limit
@@ -116,22 +129,28 @@ function Chatter(channel, user)
 }
 
 
-function Chatroom(elem)
+var chatroom = new function()
 {
-	var $this = this;
-	$this.elem = elem;
+	var self = this;
+	self.elem = null;
 	
 	
-	$this.addLine = function(line)
+	self.setRoom = function(elem)
 	{
-		$this.elem.append("<li>" + line + "</li>");
-		$this.scrollDown();
-	};
+		self.elem = elem;
+	}
 	
 	
-	$this.scrollDown = function()
+	self.addLine = function(line)
 	{
-		$this.elem.animate({ scrollTop: $this.elem.prop("scrollHeight") }, 0);
+		self.elem.append("<li>" + line + "</li>");
+		self.scrollDown();
+	},
+	
+	
+	self.scrollDown = function()
+	{
+		self.elem.animate({ scrollTop: self.elem.prop("scrollHeight") }, 0);
 	};
 		
 }
@@ -139,22 +158,23 @@ function Chatroom(elem)
 
 function Guid()
 {
-	var $this = this;
-	$this.S4 = function() 
+	var self = this;
+	self.S4 = function() 
 	{
 	   return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
 	}
 	
 	
-	$this.generate = function() 
+	self.generate = function() 
 	{
-	   return ($this.S4() + $this.S4() + "-" + $this.S4() + "-" + $this.S4() + "-" + $this.S4() + "-" + $this.S4() + $this.S4() + $this.S4());
+	   return (self.S4() + self.S4() + "-" + self.S4() + "-" + self.S4() + "-" + self.S4() + "-" + self.S4() + self.S4() + self.S4());
 	}
 }
 
 
-var chatroom = new Chatroom($("#manuscript"));
-var chatter = new Chatter(channel, user);
+chatroom.setRoom($("#manuscript"));
+chatter.setUser(user);
+chatter.setChannel(channel);
 chatter.joinRoom(chatroom);
 chatter.numberOfChatters();
 
@@ -167,6 +187,22 @@ say.bind("keyup", function(e){
 		chatter.postMessage(say.val());
 		say.val("");
 	}
+});
+
+
+$(function(){
+	
+	$("#set-username").submit(function(){
+		var username = $("#username").val()
+		$.post($(this).attr("action"), { username: username }, function(){
+			$("#set-username").fadeOut();
+			$("#chatting-as span").html(username);
+			chatter.setUser(username);
+		});
+		
+		return false;
+	});
+	
 });
 
 

@@ -7,15 +7,19 @@ class ChatterBee < Sinatra::Base
   
   configure do
     enable :static
+    enable :sessions
     set :scss, :style => :compact
+    set :session_secret, "chatterbee-is-great"
   end
+  
+  
   
   require "sass"
   require "erb"
-  require "coffee-script"
   
   before do
     @room = Room.new
+    @user = session[:user] || "anonymous"
   end
     
   
@@ -31,6 +35,11 @@ class ChatterBee < Sinatra::Base
   
   get "/leave/:id" do |id|
     @room.leave!(id)
+  end
+  
+  post "/auth" do
+    session[:user] = params[:username] unless params[:username].nil?
+    redirect to("/") unless request.xhr?
   end
   
   get "/style.css" do

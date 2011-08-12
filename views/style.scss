@@ -12,7 +12,6 @@ body
 	border:1px solid #e8e8e8;
 	font-size:1.3em;
 	padding:10px;
-	margin:50px 0;
 }
 
 #say-something
@@ -22,6 +21,7 @@ body
 
 #username
 {
+	margin:0;
 	width:15%;
 }
 
@@ -29,7 +29,7 @@ body
 {
 	min-width:90%;
 	max-width:100%;
-	margin:50px 0 0 0;
+	margin:20px 0;
 	min-height:300px;
 	max-height:500px;
 	overflow:auto;

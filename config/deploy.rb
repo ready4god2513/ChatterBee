@@ -19,3 +19,5 @@ namespace :deploy do
     run "touch #{deploy_to}/current/tmp/restart.txt"
   end
 end
+
+after "deploy", "deploy:restart"

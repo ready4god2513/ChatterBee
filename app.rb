@@ -19,7 +19,7 @@ class ChatterBee < Sinatra::Base
   
   before do
     @room = Room.new
-    @user = session[:user] || "anonymous"
+    @user = session[:user] || "user-#{rand(36**8).to_s(36)}"
   end
     
   

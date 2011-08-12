@@ -37,6 +37,10 @@ class ChatterBee < Sinatra::Base
     @room.leave!(id)
   end
   
+  get "/privacy" do
+    erb :privacy
+  end
+  
   post "/auth" do
     session[:user] = params[:username] unless params[:username].nil?
     redirect to("/") unless request.xhr?

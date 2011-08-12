@@ -2,7 +2,7 @@
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,8 +10,17 @@
 	<title>jegit : Chat Freely</title>
 	<meta name="description" content="create anonymous one-on-one and group chats.">
 	<meta name="author" content="">
-
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta property="og:title" content="jegit: Chat Freely"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="<%= request.url %>"/>
+    <meta property="og:image" content="http://jegit.com/logo.png"/>
+    <meta property="og:site_name" content="jegit"/>
+    <meta property="fb:admins" content="1439910669"/>
+    <meta property="og:description" content="Who said you shouldn't talk to strangers?  Jegit allows you to talk to strangers like never before.  Check it out.  It's free!" />
+	
 	<link rel="stylesheet" href="/style.css">
 	<link href="http://fonts.googleapis.com/css?family=Permanent+Marker:regular|Jura:300,400,500,60&v1" rel="stylesheet" type="text/css">
 	<script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
@@ -21,7 +30,6 @@
 <div class="container">
 	<header class="row">
 		<h1 class="logo"><a href="/"><span>jegit</span> : Chat Freely</a></h1>
-		
 	</header>
 	<div id="main" role="main" class="row">
 		<div class="ninecol">

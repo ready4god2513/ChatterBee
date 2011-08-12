@@ -210,24 +210,3 @@ window.onbeforeunload = function()
 {
 	return chatter.leaveRoom();
 }
-
-
-
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) 
-	{
-  doStuff(position.coords.latitude, position.coords.longitude);
-  });
-}
-else {
-  if (document.getElementById("GeoAPI")) {
-    document.getElementById("GeoAPI").innerHTML = "I'm sorry but geolocation services are not supported by your browser";
-    document.getElementById("GeoAPI").style.color = "#FF0000";
-  }
-}
-
-function doStuff(mylat, mylong) {
-  if (document.getElementById("GeoAPI")) {
-    document.getElementById("GeoAPI").innerHTML = "<iframe style=\"width: 400px; height: 400px\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"http://maps.google.com/?ll=" + mylat + "," + mylong + "&z=16&output=embed\"></iframe>";
-  }
-}

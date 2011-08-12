@@ -25,7 +25,7 @@ class Room
   
   
   def new_room
-    room = rand(36**8).to_s(36)
+    room = "#{Forgery(:name).company_name}-#{Random.new.rand(1..999)}"
     @redis.rpush ROOM_NAME, room
     room
   end

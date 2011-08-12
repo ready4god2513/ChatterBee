@@ -189,23 +189,6 @@ say.bind("keyup", function(e){
 	}
 });
 
-
-$(function(){
-	
-	$("#set-username").submit(function(){
-		var username = $("#username").val()
-		$.post($(this).attr("action"), { username: username }, function(){
-			$("#set-username").fadeOut();
-			$("#chatting-as span").html(username);
-			chatter.setUser(username);
-		});
-		
-		return false;
-	});
-	
-});
-
-
 window.onbeforeunload = function()
 {
 	return chatter.leaveRoom();

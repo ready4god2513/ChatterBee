@@ -2,9 +2,7 @@
 
 
 <% unless session[:user] %>
-	<form id="set-username" action="/auth" method="POST">
-		<input type="text" name="username" id="username" placeholder="username" required="required" />
-	</form>
+	<a href="/auth/facebook">Sign in with Facebook</a>
 <% end %>
 
 <ul id="manuscript"></ul>

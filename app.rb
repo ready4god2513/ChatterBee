@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "sinatra/base"
-require "oauth2"
-require "json"
+require "forgery"
+require "omniauth"
 
 require ::File.expand_path("lib/room")
 
@@ -15,14 +15,17 @@ class ChatterBee < Sinatra::Base
     set :session_secret, "chatterbee-is-great"
   end
   
-  
+  use Rack::Session::Cookie
+  use OmniAuth::Builder do
+    provider :facebook, "261061570588802", "b8393cb5960916a7df9ff5954b236739"
+  end
   
   require "sass"
   require "erb"
   
   before do
     @room = Room.new
-    @user = session[:user] || "user-#{rand(36**8).to_s(36)}"
+    @user = session[:user] || "user-#{Forgery(:name).company_name}"
   end
     
   
@@ -40,42 +43,13 @@ class ChatterBee < Sinatra::Base
     @room.leave!(id)
   end
   
+  get "/auth/facebook/callback" do
+    user = request.env["omniauth.auth"]
+    raise user.inspect
+  end
+  
   get "/privacy" do
     erb :privacy
-  end  
-  
-  get "/auth/facebook" do
-    redirect client.web_server.authorize_url(
-      :redirect_uri => redirect_uri,
-      :scope => "email,offline_access"
-    )
-  end
-
-
-  get "/auth/facebook/callback" do
-    access_token = client.web_server.access_token(params[:code], :redirect_uri => redirect_uri)
-    user = JSON.parse(access_token.get("/me"))
-    
-    raise user.inspect
-    @user = session[:user] = user
-  end
-  
-  
-  get "/style.css" do
-    scss :style
-  end
-  
-  
-  # BEGIN METHODS
-  def client
-    OAuth2::Client.new("261061570588802", "b8393cb5960916a7df9ff5954b236739", :site => "https://graph.facebook.com")    
-  end
-  
-  def redirect_uri
-    uri = URI.parse(request.url)
-    uri.path = "/auth/facebook/callback"
-    uri.query = nil
-    uri.to_s
   end
   
 end

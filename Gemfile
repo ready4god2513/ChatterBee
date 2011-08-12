@@ -9,7 +9,8 @@ gem "resque"
 gem "sinatra-redis"
 gem "thin"
 gem "geocoder"
-gem "oauth2"
+gem "omniauth", ">= 0.2.6"
+gem "forgery"
 
 group :development do
 	gem "capistrano"

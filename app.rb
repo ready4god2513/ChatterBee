@@ -61,7 +61,7 @@ class ChatterBee < Sinatra::Base
     session[:user] = user["user_info"]["nickname"]
     session[:pic] = user["user_info"]["image"]
     
-    redirect to("/")
+    redirect to(session[:redirect_after])
   end
   
   get "/privacy" do
@@ -70,6 +70,7 @@ class ChatterBee < Sinatra::Base
   
   
   def auth_needed?
+    session[:redirect_after] = request.path_info
     @user || request.path_info =~ /auth|\./
   end
   

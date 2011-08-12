@@ -3,23 +3,50 @@
 body
 {
 	background:#f8f8f8;
+	color:#222;
 	font-family: 'Jura', serif;
 	margin:50px auto;
 	
 	h1
 	{
 		font-family: 'Permanent Marker', serif;
+	}
+	
+	.logo
+	{
+		
+		color:#222;
 		
 		span
 		{
 			color:#FF1493;
 		}
+		
+		a
+		{
+			color:#222 !important;
+		}
 	}
+}
+
+.logo
+{
+	color:#FF1493 !important;
 }
 
 a
 {
-	color:#1E90FF !important;
+	color:#0d98ba !important;
+	text-decoration:none;
+}
+
+#sign-in-with-facebook
+{
+	background:#e8e8e8;
+	display:block;
+	font-size:1.4em;
+	margin:10px;
+	padding:10px;
 }
 
 #say-something, #manuscript, #username

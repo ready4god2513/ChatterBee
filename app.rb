@@ -39,6 +39,7 @@ class ChatterBee < Sinatra::Base
   end
   
   get "/auth/?" do
+    redirect to("/") if @user
     erb :auth
   end
   
@@ -52,8 +53,8 @@ class ChatterBee < Sinatra::Base
   end
   
   get "/style.css" do
-      scss :style
-    end
+    scss :style
+  end
   
   get "/auth/facebook/callback" do
     user = request.env["omniauth.auth"]

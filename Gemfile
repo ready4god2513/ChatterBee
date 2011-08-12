@@ -9,3 +9,8 @@ gem "resque"
 gem "sinatra-redis"
 gem "thin"
 gem "geocoder"
+
+group :development do
+	gem "capistrano"
+	gem "railsless-deploy"
+end

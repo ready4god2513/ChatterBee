@@ -4,6 +4,12 @@
 <div id="auth-options" class="sevencol">
 	<a href="/auth/facebook"><img src="/facebook.png" alt="Use your facebook account to sign in"></a>
 	<a href="/auth/twitter"><img src="/twitter.png" alt="Use your twitter account to sign in"></a>
+	
+	<h3>Don't have a facebook or twitter?</h3>
+	<h4>Enter a nickname below:</h4>
+	<form action="/auth/custom" method="POST">
+		<input type="text" name="nickname" id="nickname" required="required" placeholder="captian oblivious" />
+	</form>
 </div>
 
 <div class="fourcol">

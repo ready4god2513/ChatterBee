@@ -78,9 +78,17 @@ class ChatterBee < Sinatra::Base
   get "/auth/:name/callback" do
     user = request.env["omniauth.auth"]
     session[:user] = user["user_info"]["nickname"]
-    session[:pic] = user["user_info"]["image"]
-    
     redirect to(session[:redirect_after])
+  end
+  
+  post "/auth/custom" do
+    session[:user] = params[:nickname]
+    redirect to(session[:redirect_after])
+  end
+  
+  get "/signout" do
+    session.delete(:user)
+    redirect to("/auth")
   end
   
   get "/privacy" do

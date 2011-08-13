@@ -22,7 +22,7 @@ class ChatterBee < Sinatra::Base
   use OmniAuth::Builder do
     provider :facebook, "261061570588802", "b8393cb5960916a7df9ff5954b236739"
     provider :twitter, "2I4tbMUdkYlscDnhLQhbqw", "Nw7oaPzt6HfgSS42K57BwdjwAfzLbmxnp2LOyxohws"
-    provider :google_apps, OpenID::Store::Filesystem.new("/tmp")
+    provider :google_apps, OpenID::Store::Filesystem.new("/tmp"), :name => "google", :identifier => "https://www.google.com/accounts/o8/id"
   end
   
   require "sass"

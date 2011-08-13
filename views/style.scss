@@ -13,19 +13,31 @@ body
 		margin:30px 0;
 	}
 	
-	.logo
+	h1.logo
 	{
 		
 		color:#222;
 		
 		span
 		{
-			color:#FF1493;
+			color:#0d98ba;
+			display:block;
+			font-family: 'Jura', serif;
+			font-size:0.7em;
+			position:relative;
+			left:60px;
 		}
 		
 		a
 		{
 			color:#222 !important;
+		}
+		
+		img
+		{
+			margin-right:10px;
+			position:relative;
+			top:25px;
 		}
 	}
 }

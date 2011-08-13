@@ -1,8 +1,8 @@
 <h2>Room: <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@connection}" %>"><%= @connection%></a></h2>
+<h3 id="chatting-as">Chatting as <span><%= @user %></span></h3>
 
 <ul id="manuscript"></ul>
 
-<h3 id="chatting-as">Chatting as <span><%= @user %></span></h3>
 <input type="text" name="say-something" id="say-something" placeholder="say something and hit enter to send" autofocus="true" />
 
 

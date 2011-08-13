@@ -6,9 +6,11 @@
 <input type="text" name="say-something" id="say-something" placeholder="Say something..." autofocus="true" />
 
 
-<div pub-key="pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e" sub-key="sub-7e2e745c-c38c-11e0-a0a5-53ec83638759" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+<div pub-key="<%= @pubkey %>" sub-key="<%= @subkey %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
-	var channel = "chatterbee-chatter-room-<%= @connection %>";
+	var channel = "jedit-room-<%= @connection %>";
 	var user = "<%= @user %>";
 </script>
+
+<a href="/print/jedit-room-<%= @connection %>" class="print-convo" target="_blank">Great conversation?  Print it.</a>

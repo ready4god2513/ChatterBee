@@ -11,6 +11,7 @@ gem "thin"
 gem "geocoder"
 gem "omniauth", ">= 0.2.6"
 gem "forgery"
+gem "pubnub-ruby"
 
 group :development do
 	gem "capistrano"

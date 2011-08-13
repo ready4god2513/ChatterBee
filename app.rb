@@ -73,7 +73,7 @@ class ChatterBee < Sinatra::Base
   
   
   def auth_needed?
-    @user || request.path_info =~ /auth|\./
+    @user || request.path_info =~ /auth|privacy|\./
   end
   
   def save_path!

@@ -12,6 +12,7 @@ gem "geocoder"
 gem "omniauth", ">= 0.2.6"
 gem "forgery"
 gem "pubnub-ruby"
+gem "uglifier"
 
 group :development do
 	gem "capistrano"

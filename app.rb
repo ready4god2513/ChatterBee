@@ -5,6 +5,7 @@ require "omniauth"
 require "openssl"
 require "openid/store/filesystem"
 require "pubnub"
+require "uglifier"
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
@@ -14,7 +15,6 @@ require ::File.expand_path("lib/room")
 class ChatterBee < Sinatra::Base
   
   configure do
-    enable :static
     enable :sessions
     set :scss, :style => :compact
     set :session_secret, "chatterbee-is-great"
@@ -91,6 +91,11 @@ class ChatterBee < Sinatra::Base
   
   get "/privacy" do
     erb :privacy
+  end
+  
+  get "/javascripts/application.js" do
+    content_type "application/javascript"
+    Uglifier.new.compile File.read(::File.expand_path("public/javascripts/application.js"))
   end
   
   

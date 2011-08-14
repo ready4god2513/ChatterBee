@@ -42,7 +42,7 @@ class Room
   
   def history(channel)
     @pubnub.history({
-        "channel" => id,
+        "channel" => channel,
         "limit"   => 50000
     })
   end

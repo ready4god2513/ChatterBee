@@ -36,7 +36,7 @@ class Room
   end
   
   def generate_room_name
-    "#{Forgery(:name).company_name}-#{Random.new.rand(1..999)}"
+    "#{Forgery(:name).company_name}-#{Random.new.rand(1..999999)}"
   end
   
   

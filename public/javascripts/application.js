@@ -124,7 +124,6 @@ var chatter = new function()
 	self.numberOfChatters = function()
 	{
 		PUBNUB.analytics({
-		    channel : self.channel,  // OPTIONAL
 		    duration : 0,           // Minutes Offset
 		    ago      : 0,            // Minutes Ago
 		    limit    : 100,          // Aggregation Limit
@@ -210,21 +209,5 @@ PUBNUB.subscribe({
 
 window.onbeforeunload = function(e)
 {
-	if (!e) 
-	{
-		e = window.event;
-	}
-
-	chatter.leaveRoom();
-	
-	//e.cancelBubble is supported by IE - this will kill the bubbling process.
-	e.cancelBubble = true;
-	e.returnValue = ""; //This is displayed on the dialog
-
-	//e.stopPropagation works in Firefox.
-	if (e.stopPropagation) 
-	{
-		e.stopPropagation();
-		e.preventDefault();
-	}
+	return chatter.leaveRoom();
 }

@@ -198,15 +198,6 @@ say.bind("keyup", function(e){
 });
 
 
-PUBNUB.subscribe({
-    channel  : "chatters-count",
-    callback : function(message) 
-	{
-		$("#chatters-count span").html(message);
-	}
-});
-
-
 window.onbeforeunload = function(e)
 {
 	return chatter.leaveRoom();

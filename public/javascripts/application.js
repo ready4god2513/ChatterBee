@@ -198,7 +198,33 @@ say.bind("keyup", function(e){
 	}
 });
 
-window.onbeforeunload = function()
+
+PUBNUB.subscribe({
+    channel  : "chatters-count",
+    callback : function(message) 
+	{
+		$("#chatters-count span").html(message);
+	}
+});
+
+
+window.onbeforeunload = function(e)
 {
-	return chatter.leaveRoom();
+	if (!e) 
+	{
+		e = window.event;
+	}
+
+	chatter.leaveRoom();
+	
+	//e.cancelBubble is supported by IE - this will kill the bubbling process.
+	e.cancelBubble = true;
+	e.returnValue = ""; //This is displayed on the dialog
+
+	//e.stopPropagation works in Firefox.
+	if (e.stopPropagation) 
+	{
+		e.stopPropagation();
+		e.preventDefault();
+	}
 }

@@ -6,9 +6,8 @@ require "sass"
 require "erb"
 require "geocoder"
 
-MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com", 10060, :pool_size => 5, :timeout => 5)
+MongoMapper.connection = Mongo::Connection.new("localhost", 27017, :pool_size => 5, :timeout => 5)
 MongoMapper.database = "jegit"
-MongoMapper.database.authenticate("jegit","jsdhjkhd#*DIDH")
 
 require ::File.expand_path("lib/room")
 require ::File.expand_path("lib/user")

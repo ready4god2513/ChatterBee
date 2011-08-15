@@ -4,7 +4,7 @@ class User
   
   key :name, String
   key :location, String
-  key :other, Hash
+  key :gender, String
   timestamps!
   
   

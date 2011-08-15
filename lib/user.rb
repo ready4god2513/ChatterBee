@@ -12,4 +12,9 @@ class User
     self.location || other["location"]
   end
   
+  def update_location(loc)
+    self.location = loc
+    self.save
+  end
+  
 end

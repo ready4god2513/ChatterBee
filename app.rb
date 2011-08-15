@@ -119,7 +119,10 @@ class ChatterBee < Sinatra::Base
   
   post "/convert-location" do
     addresses = Geocoder.search("40.586539,-122.391675")
-    "#{addresses.first.city}, #{addresses.first.state}, #{addresses.first.country}"
+    location = "#{addresses.first.city}, #{addresses.first.state}, #{addresses.first.country}"
+    @user.update_location(location) if signed_in?
+    
+    location
   end
   
   

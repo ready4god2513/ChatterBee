@@ -84,6 +84,7 @@ class ChatterBee < Sinatra::Base
     @user = User.create(
       :name => params[:nickname], 
       :location => params[:location]
+      :gender => params[:gender]
     )
     
     login!

@@ -9,7 +9,7 @@ class User
   
   
   def approximate_location
-    self.location || other["location"]
+    self.location || "undisclosed"
   end
   
   def update_location(loc)

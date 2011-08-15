@@ -10,7 +10,7 @@
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
 	var channel = "<%= @room.name %>";
-	var user = "<%= @user %>";
+	var user = "<%= @user.name %>";
 </script>
 
 <a href="/print/=<%= @room.name %>" class="print-convo" target="_blank">Great conversation?  Print it.</a>

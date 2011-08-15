@@ -11,6 +11,7 @@ gem "forgery"
 gem "pubnub-ruby"
 gem "uglifier"
 gem "mongo_mapper"
+gem "bson_ext"
 
 group :development do
 	gem "capistrano"

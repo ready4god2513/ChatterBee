@@ -8,6 +8,11 @@ require "pubnub"
 require "mongo_mapper"
 require "sass"
 require "erb"
+
+MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com",10060, :pool_size => 5, :timeout => 5)
+MongoMapper.database = "jegit"
+MongoMapper.database.authenticate("jegit","jsdhjkhd#*DIDH")
+
 require ::File.expand_path("lib/room")
 require ::File.expand_path("lib/user")
 
@@ -29,10 +34,6 @@ class ChatterBee < Sinatra::Base
     provider :twitter, "2I4tbMUdkYlscDnhLQhbqw", "Nw7oaPzt6HfgSS42K57BwdjwAfzLbmxnp2LOyxohws"
   end
   
-  MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com",10060, :pool_size => 5, :timeout => 5)
-  MongoMapper.database = "jegit"
-  MongoMapper.database.authenticate("jegit","jsdhjkhd#*DIDH")
-  
   
   before do
     @pubkey = "pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e"
@@ -40,7 +41,7 @@ class ChatterBee < Sinatra::Base
     @secretkey = "sec-a58d32c9-868c-4ab6-b70e-6555bee4758e"
     
     @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
-    @user = User.find(session[:user]) || nil
+    @user = User.find(session[:id]) || nil
     
     save_path! unless auth_needed?
     redirect to("/auth") if auth_needed?
@@ -96,10 +97,10 @@ class ChatterBee < Sinatra::Base
   end
   
   post "/auth/custom" do
+    raise "GOT HERE"
     @user = User.create(
       :name => params[:nickname], 
-      :location => params[:location], 
-      :other => Array.new
+      :location => params[:location]
     )
     
     login!
@@ -131,7 +132,7 @@ class ChatterBee < Sinatra::Base
   end
   
   def login!
-    session[:user] = @user
+    session[:id] = @user.id
     publish_chatter_count
     
     redirect_path = session[:redirect_after]

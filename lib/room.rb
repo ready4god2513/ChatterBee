@@ -13,7 +13,7 @@ class Room
   Room.ensure_index(:open)
   
   
-  def self.generate_room_name
+  def self.generate_name
     "#{Forgery(:name).company_name}-#{Random.new.rand(1..999999)}"
   end
   
@@ -21,7 +21,7 @@ class Room
     self.users << user
     self.open = open?
     self.save!
-  end=
+  end
   
   def leave(user)
     self.users.delete(user)

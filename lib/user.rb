@@ -1,5 +1,3 @@
-require "sinatra/redis"
-
 class User
   
   include MongoMapper::Document

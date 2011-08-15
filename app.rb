@@ -83,7 +83,7 @@ class ChatterBee < Sinatra::Base
   post "/auth/sign-in" do
     @user = User.create(
       :name => params[:nickname], 
-      :location => params[:location]
+      :location => params[:location],
       :gender => params[:gender]
     )
     

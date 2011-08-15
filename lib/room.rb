@@ -30,12 +30,12 @@ class Room
   end
   
   def open?
-    self.users.count > 0
+    self.users.count <= 1
   end
   
   def history(pubnub)
-    @pubnub.history({
-        "channel" => self.id,
+    pubnub.history({
+        "channel" => self.name,
         "limit"   => 50000
     })
   end

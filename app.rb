@@ -43,7 +43,6 @@ class ChatterBee < Sinatra::Base
     @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
     @user = User.find(session[:id]) || nil
     
-    save_path! unless auth_needed?
     redirect to("/auth") if auth_needed?
   end
     
@@ -67,7 +66,7 @@ class ChatterBee < Sinatra::Base
     @room = Room.find_by_name(name)
     @messages = @room.history(@pubnub)
     
-    attachment "jegit-archive-#{id}.html"
+    attachment "jegit-archive-#{name}.html"
     erb :print, :layout => false
   end
   
@@ -97,7 +96,6 @@ class ChatterBee < Sinatra::Base
   end
   
   post "/auth/custom" do
-    raise "GOT HERE"
     @user = User.create(
       :name => params[:nickname], 
       :location => params[:location]
@@ -127,18 +125,11 @@ class ChatterBee < Sinatra::Base
     !@user.nil?
   end
   
-  def save_path!
-    session[:redirect_after] = request.path_info
-  end
-  
   def login!
     session[:id] = @user.id
     publish_chatter_count
     
-    redirect_path = session[:redirect_after]
-    session.delete(:redirect_path)
-    
-    redirect to(redirect_path)
+    redirect to("/")
   end
   
   def publish_chatter_count

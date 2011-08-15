@@ -1,5 +1,5 @@
 <h2>Room: <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@room.name}" %>"><%= @room.name %></a></h2>
-<h3 id="chatting-as">Chatting as <span><%= @user.name %></span></h3>
+<h3 id="chatting-as">Chatting as <span><%= @user.name %></span> in <%= @user.approximate_location %></h3>
 
 <ul id="manuscript"></ul>
 

@@ -89,7 +89,7 @@ class ChatterBee < Sinatra::Base
     @user = User.create(
       :name => request.env["omniauth.auth"]["user_info"]["nickname"], 
       :location => nil, 
-      :other => request.env["omniauth.auth"]
+      :other => request.env["omniauth.auth"]["user_info"]
     )
     
     login!

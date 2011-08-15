@@ -4,7 +4,12 @@ class User
   
   key :name, String
   key :location, String
-  key :other, Array
+  key :other, Hash
   timestamps!
+  
+  
+  def approximate_location
+    self.location || other["location"]
+  end
   
 end

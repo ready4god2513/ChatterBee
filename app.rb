@@ -9,7 +9,7 @@ require "mongo_mapper"
 require "sass"
 require "erb"
 
-MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com",10060, :pool_size => 5, :timeout => 5)
+MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com", 10060, :pool_size => 5, :timeout => 5)
 MongoMapper.database = "jegit"
 MongoMapper.database.authenticate("jegit","jsdhjkhd#*DIDH")
 

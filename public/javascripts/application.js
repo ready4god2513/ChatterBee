@@ -180,21 +180,70 @@ function Guid()
 }
 
 
-chatroom.setRoom($("#manuscript"));
-chatter.setUser(user);
-chatter.setChannel(channel);
-chatter.joinRoom(chatroom);
-chatter.numberOfChatters();
+if(typeof(user) != "undefined")
+{
+	chatroom.setRoom($("#manuscript"));
+	chatter.setUser(user);
+	chatter.setChannel(channel);
+	chatter.joinRoom(chatroom);
+	chatter.numberOfChatters();
 
-var say = $("#say-something");
-say.bind("keyup", function(e){
-	var code = (e.keyCode ? e.keyCode : e.which);
+	var say = $("#say-something");
+	say.bind("keyup", function(e){
+		var code = (e.keyCode ? e.keyCode : e.which);
 
-	if(code == 13 && say.val() != "")
+		if(code == 13 && say.val() != "")
+		{
+			chatter.postMessage(say.val());
+			say.val("");
+		}
+	});
+}
+
+
+
+function initiate_geolocation() 
+{  
+    navigator.geolocation.getCurrentPosition(handle_geolocation_query, handle_errors);  
+}  
+
+function handle_errors(error)  
+{  
+    switch(error.code)  
+    {  
+        case error.PERMISSION_DENIED: console.log("user did not share geolocation data");  
+        break;  
+
+        case error.POSITION_UNAVAILABLE: console.log("could not detect current position");  
+        break;  
+
+        case error.TIMEOUT: console.log("retrieving position timed out");  
+        break;  
+
+        default: console.log("unknown error");  
+        break;  
+    }  
+}  
+
+function handle_geolocation_query(position)
+{
+	$.ajax({
+		url: "/convert-location",
+		type: "post",
+		data: "latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude,
+		success: function(message)
+		{
+			$("#location").val(message);
+		}
+	});
+}
+
+$(function(){
+	if($("#location"))
 	{
-		chatter.postMessage(say.val());
-		say.val("");
+		initiate_geolocation();
 	}
+	
 });
 
 

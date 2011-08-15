@@ -8,6 +8,7 @@ require "pubnub"
 require "mongo_mapper"
 require "sass"
 require "erb"
+require "geocoder"
 
 MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com", 10060, :pool_size => 5, :timeout => 5)
 MongoMapper.database = "jegit"
@@ -116,9 +117,14 @@ class ChatterBee < Sinatra::Base
     erb :privacy
   end
   
+  post "/convert-location" do
+    addresses = Geocoder.search("40.586539,-122.391675")
+    "#{addresses.first.city}, #{addresses.first.state}, #{addresses.first.country}"
+  end
+  
   
   def auth_needed?
-    !signed_in? && !(request.path_info =~ /auth|privacy|\./)
+    !signed_in? && !(request.path_info =~ /auth|privacy|convert-location|\./)
   end
   
   def signed_in?

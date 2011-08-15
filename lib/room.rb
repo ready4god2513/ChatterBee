@@ -1,3 +1,5 @@
+require "forgery"
+
 class Room
   
   include MongoMapper::Document

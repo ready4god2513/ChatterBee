@@ -1,9 +1,5 @@
 require "bundler/setup"
 require "sinatra/base"
-require "forgery"
-require "omniauth"
-require "openssl"
-require "openid/store/filesystem"
 require "pubnub"
 require "mongo_mapper"
 require "sass"
@@ -16,8 +12,6 @@ MongoMapper.database.authenticate("jegit","jsdhjkhd#*DIDH")
 
 require ::File.expand_path("lib/room")
 require ::File.expand_path("lib/user")
-
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 
 class ChatterBee < Sinatra::Base
@@ -86,17 +80,7 @@ class ChatterBee < Sinatra::Base
     erb :auth
   end
   
-  get "/auth/:name/callback" do
-    @user = User.create(
-      :name => request.env["omniauth.auth"]["user_info"]["nickname"], 
-      :location => nil, 
-      :other => request.env["omniauth.auth"]["user_info"]
-    )
-    
-    login!
-  end
-  
-  post "/auth/custom" do
+  post "/auth/sign-in" do
     @user = User.create(
       :name => params[:nickname], 
       :location => params[:location]

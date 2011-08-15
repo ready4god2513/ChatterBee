@@ -53,46 +53,144 @@ a
 	text-decoration:none;
 }
 
-#auth-options
+#main
 {
-	margin:30px 0;
 	
-	h3
+	.ninecol
 	{
-		margin-top:20px;
+		background:rgba(255, 255, 255, 0.5);
 	}
 	
-	form
+	#auth-options
 	{
-		margin:20px 0;
-		
-		.fields
+		margin:30px 0;
+
+		h3
 		{
-			margin:10px 0;
-			
-			label
+			margin-top:20px;
+		}
+
+		form
+		{
+			margin:5% 10% 5% 0;
+
+			.fields
 			{
-				display:block
+				background:rgba(255, 255, 255, 0.9);
+				margin:3% 0;
+				padding:5px;
+
+				label
+				{
+					display:block
+				}
+			}
+
+
+			.actions
+			{
+				margin:20px 0;
+				text-align:right;
+				
+				input[type=submit]
+				{
+				  background-color: #a5b8da;
+				  background-image: -webkit-gradient(linear, left top, left bottom, from(#a5b8da), to(#7089b3));
+				  /* Saf4+, Chrome */
+				  background-image: -webkit-linear-gradient(top, #a5b8da, #7089b3);
+				  background-image: -moz-linear-gradient(top, #a5b8da, #7089b3);
+				  background-image: -ms-linear-gradient(top, #a5b8da, #7089b3);
+				  background-image: -o-linear-gradient(top, #a5b8da, #7089b3);
+				  background-image: linear-gradient(top, #a5b8da, #7089b3);
+				  border-top: 1px solid #758fba;
+				  border-right: 1px solid #6c84ab;
+				  border-bottom: 1px solid #5c6f91;
+				  border-left: 1px solid #6c84ab;
+				  -webkit-border-radius: 18px;
+				  -moz-border-radius: 18px;
+				  -ms-border-radius: 18px;
+				  -o-border-radius: 18px;
+				  border-radius: 18px;
+				  -webkit-box-shadow: inset 0 1px 0 0 #aec3e5;
+				  -moz-box-shadow: inset 0 1px 0 0 #aec3e5;
+				  -ms-box-shadow: inset 0 1px 0 0 #aec3e5;
+				  -o-box-shadow: inset 0 1px 0 0 #aec3e5;
+				  box-shadow: inset 0 1px 0 0 #aec3e5;
+				  color: #fff;
+				  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+				  line-height: 1;
+				  padding: 8px 0;
+				  text-align: center;
+				  text-shadow: 0 -1px 1px #64799e;
+				  text-transform: uppercase;
+				  width: 150px; 
+				}
+				
+				input[type=submit]:hover 
+				{
+				    background-color: #9badcc;
+				    background-image: -webkit-gradient(linear, left top, left bottom, from(#9badcc), to(#687fa6));
+				    /* Saf4+, Chrome */
+				    background-image: -webkit-linear-gradient(top, #9badcc, #687fa6);
+				    background-image: -moz-linear-gradient(top, #9badcc, #687fa6);
+				    background-image: -ms-linear-gradient(top, #9badcc, #687fa6);
+				    background-image: -o-linear-gradient(top, #9badcc, #687fa6);
+				    background-image: linear-gradient(top, #9badcc, #687fa6);
+				    border-top: 1px solid #6d86ad;
+				    border-right: 1px solid #647a9e;
+				    border-bottom: 1px solid #546685;
+				    border-left: 1px solid #647a9e;
+				    -webkit-box-shadow: inset 0 1px 0 0 #a5b9d9;
+				    -moz-box-shadow: inset 0 1px 0 0 #a5b9d9;
+				    -ms-box-shadow: inset 0 1px 0 0 #a5b9d9;
+				    -o-box-shadow: inset 0 1px 0 0 #a5b9d9;
+				    box-shadow: inset 0 1px 0 0 #a5b9d9;
+				    cursor: pointer; 
+				}
+				 input[type=submit]:active {
+				    border: 1px solid #546685;
+				    -webkit-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+				    -moz-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+				    -ms-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+				    -o-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+				    box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee; 
+				}
 			}
 		}
-		
-		
-		.actions
+	}
+
+	ul
+	{
+		margin:10px 0 20px 20px;
+
+		li
 		{
-			margin:20px 0;
+			margin:5px;
+		}
+	}
+	
+	#proms
+	{
+
+		div#social
+		{
+			margin-bottom:50px;
+
+			div.row
+			{
+				margin:10px;
+
+				div.company
+				{
+					display:inline-block;
+					margin:5px;
+				}
+			}
 		}
 	}
 }
 
-ul
-{
-	margin-bottom:20px;
-	
-	li
-	{
-		margin:5px;
-	}
-}
+
 
 #say-something, #manuscript, #username, input[type=text]
 {
@@ -118,25 +216,7 @@ ul
 	margin:20px 0;
 }
 
-#proms
-{
-	
-	div#social
-	{
-		margin:50px 0;
-		
-		div.row
-		{
-			margin:10px;
-			
-			div.company
-			{
-				display:inline-block;
-				margin:5px;
-			}
-		}
-	}
-}
+
 
 .print-convo
 {

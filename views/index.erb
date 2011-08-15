@@ -1,5 +1,5 @@
-<h2>Room: <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@connection}" %>"><%= @connection%></a></h2>
-<h3 id="chatting-as">Chatting as <span><%= @user %></span></h3>
+<h2>Room: <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@room.name}" %>"><%= @room.name %></a></h2>
+<h3 id="chatting-as">Chatting as <span><%= @user.name %></span></h3>
 
 <ul id="manuscript"></ul>
 
@@ -9,8 +9,8 @@
 <div pub-key="<%= @pubkey %>" sub-key="<%= @subkey %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
-	var channel = "jedit-room-<%= @connection %>";
+	var channel = "<%= @room.name %>";
 	var user = "<%= @user %>";
 </script>
 
-<a href="/print/jedit-room-<%= @connection %>" class="print-convo" target="_blank">Great conversation?  Print it.</a>
+<a href="/print/=<%= @room.name %>" class="print-convo" target="_blank">Great conversation?  Print it.</a>

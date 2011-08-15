@@ -5,10 +5,13 @@ require "omniauth"
 require "openssl"
 require "openid/store/filesystem"
 require "pubnub"
+require "mongo_mapper"
+require "sass"
+require "erb"
+require ::File.expand_path("lib/room")
+require ::File.expand_path("lib/user")
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-
-require ::File.expand_path("lib/room")
 
 
 class ChatterBee < Sinatra::Base
@@ -26,65 +29,86 @@ class ChatterBee < Sinatra::Base
     provider :twitter, "2I4tbMUdkYlscDnhLQhbqw", "Nw7oaPzt6HfgSS42K57BwdjwAfzLbmxnp2LOyxohws"
   end
   
-  require "sass"
-  require "erb"
+  MongoMapper.connection = Mongo::Connection.new("staff.mongohq.com",10060, :pool_size => 5, :timeout => 5)
+  MongoMapper.database = "jegit"
+  MongoMapper.database.authenticate("jegit","jsdhjkhd#*DIDH")
+  
   
   before do
-    
     @pubkey = "pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e"
     @subkey = "sub-7e2e745c-c38c-11e0-a0a5-53ec83638759"
     @secretkey = "sec-a58d32c9-868c-4ab6-b70e-6555bee4758e"
     
-    @room = Room.new(@pubkey, @subkey, @secretkey)
-    @user = session[:user]
+    @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
+    @user = User.find(session[:user]) || nil
     
     save_path! unless auth_needed?
-    redirect to("/auth") unless auth_needed?
+    redirect to("/auth") if auth_needed?
   end
     
   
   get "/" do
-    @connection = @room.join
+    @room = Room.where(:open => true).first(:order => :created_at.desc) || Room.create(:name => Room.generate_name, :open => true)
+    @room.join(@user)
+    publish_room_count
+    
     erb :index
   end
   
-  get "/auth/?" do
-    redirect to("/") if @user
-    erb :auth
-  end
-  
-  get "/room/:id" do |id|
-    @connection = id
+  get "/room/:name" do |name|
+    @room = Room.find_by_name(name)
+    publish_room_count
+    
     erb :index
   end
   
-  get "/print/:id" do |id|
-    @messages = @room.history(id)
+  get "/print/:name" do |name|
+    @room = Room.find_by_name(name)
+    @messages = @room.history(@pubnub)
     
     attachment "jegit-archive-#{id}.html"
-    erb :manuscript, :layout => false
+    erb :print, :layout => false
   end
   
   get "/leave/:id" do |id|
-    @room.leave!(id)
+    @room = Room.find(id)
+    @room.leave(@user)
+    publish_room_count
   end
   
   get "/style.css" do
     scss :style
   end
   
+  get "/auth/?" do
+    redirect to("/") if signed_in?
+    erb :auth
+  end
+  
   get "/auth/:name/callback" do
-    user = request.env["omniauth.auth"]
-    session[:user] = user["user_info"]["nickname"]
-    redirect to(session[:redirect_after])
+    @user = User.create(
+      :name => request.env["omniauth.auth"]["user_info"]["nickname"], 
+      :location => nil, 
+      :other => request.env["omniauth.auth"]
+    )
+    
+    login!
   end
   
   post "/auth/custom" do
-    session[:user] = params[:nickname]
-    redirect to(session[:redirect_after])
+    @user = User.create(
+      :name => params[:nickname], 
+      :location => params[:location], 
+      :other => Array.new
+    )
+    
+    login!
   end
   
   get "/signout" do
+    @user.destroy # We don"t need them in the database any longer
+    publish_chatter_count
+    
     session.delete(:user)
     redirect to("/auth")
   end
@@ -95,11 +119,39 @@ class ChatterBee < Sinatra::Base
   
   
   def auth_needed?
-    @user || request.path_info =~ /auth|privacy|\./
+    !signed_in? && !(request.path_info =~ /auth|privacy|\./)
+  end
+  
+  def signed_in?
+    !@user.nil?
   end
   
   def save_path!
     session[:redirect_after] = request.path_info
+  end
+  
+  def login!
+    session[:user] = @user
+    publish_chatter_count
+    
+    redirect_path = session[:redirect_after]
+    session.delete(:redirect_path)
+    
+    redirect to(redirect_path)
+  end
+  
+  def publish_chatter_count
+    @pubnub.publish({
+      "channel" => "chatters-count",
+      "message" => User.count
+    })
+  end
+  
+  def publish_room_count
+    @pubnub.publish({
+      "channel" => "room-count",
+      "message" => Room.count
+    })
   end
   
 end

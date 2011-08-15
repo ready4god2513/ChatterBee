@@ -239,7 +239,7 @@ function handle_geolocation_query(position)
 }
 
 $(function(){
-	if($("#location"))
+	if($("#location").length > 0)
 	{
 		initiate_geolocation();
 	}

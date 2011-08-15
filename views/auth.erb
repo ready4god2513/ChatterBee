@@ -4,14 +4,25 @@
 <div id="auth-options" class="sevencol">
 	<h4>Enter nickname below and hit enter:</h4>
 	<form action="/auth/sign-in" method="POST">
-		<input type="text" name="nickname" id="nickname" required="required" placeholder="captian oblivious" />
-		<select name="gender" id="gender">
-			<option value="none">Gender</option>
-			<option value="none">None of your Business</option>
-			<option value="male">Male</option>
-			<option value="female">Female</option>
-		</select>
 		<input type="hidden" name="location" id="location" />
+		
+		<div class="fields">
+			<label for="nickname">Nickname</label>
+			<input type="text" name="nickname" id="nickname" required="required" placeholder="captian oblivious" />
+		</div>
+		<div class="fields">
+			<label for="gender">Gender (optional)</label>
+			<select name="gender" id="gender">
+				<option value="none">Gender</option>
+				<option value="none">None of your Business</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+		</div>
+		
+		<div class="actions">
+			<input type="submit" value="Start Chatting">
+		</div>
 	</form>
 </div>
 

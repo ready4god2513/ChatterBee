@@ -57,13 +57,6 @@ a
 {
 	margin:30px 0;
 	
-	a
-	{
-		color:#222;
-		display:inline-block;
-		margin:0 10px 0 0;
-	}
-	
 	h3
 	{
 		margin-top:20px;
@@ -72,6 +65,22 @@ a
 	form
 	{
 		margin:20px 0;
+		
+		.fields
+		{
+			margin:10px 0;
+			
+			label
+			{
+				display:block
+			}
+		}
+		
+		
+		.actions
+		{
+			margin:20px 0;
+		}
 	}
 }
 

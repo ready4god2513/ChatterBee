@@ -37,15 +37,22 @@
 		</div>
 		<div class="twocol" id="proms">
 			<div id="social">
-				<fb:like href="<%= request.url %>" send="false" action="like" show_faces="false" font="" layout="box_count"></fb:like>
+				<div class="row">
+					<fb:like href="<%= request.url %>" send="false" action="like" show_faces="false" font="" layout="box_count"></fb:like>
+
+					<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
+					<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				</div>
 				
-				<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>
-				<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				<div class="row">
+					<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+					<g:plusone size="tall"></g:plusone>
+
+					<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&r=<%= request.url %>"></script>
+				</div>
 				
-				<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-				<g:plusone size="tall"></g:plusone>
 				
-				<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&r=<%= request.url %>"></script>
+				
 			</div>
 		</div>
 	</div>

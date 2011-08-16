@@ -2,7 +2,7 @@
 
 body
 {
-	background:url(/bg.png) repeat;
+	background:rgba(235, 208, 119, 0.8);
 	color:#222;
 	font-family: 'Jura', serif;
 	margin:10px auto;
@@ -15,12 +15,11 @@ body
 	
 	h1.logo
 	{
-		
-		color:#fff;
+		text-shadow: #fff 1px 1px 1px;
 		
 		span
 		{
-			color:#fff;
+			color:#222;
 			display:block;
 			font-family: 'Jura', serif;
 			font-size:0.7em;
@@ -28,14 +27,7 @@ body
 		
 		a
 		{
-			color:#fff !important;
-		}
-		
-		img
-		{
-			margin-right:10px;
-			position:relative;
-			top:25px;
+			color:#222 !important;
 		}
 	}
 }

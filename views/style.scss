@@ -3,9 +3,10 @@
 body
 {
 	background:rgba(235, 208, 119, 0.8);
+	border-top: 6px solid #0d98ba;
 	color:#222;
 	font-family: 'Jura', serif;
-	margin:10px auto;
+	margin:0 auto;
 	
 	h1
 	{
@@ -15,7 +16,7 @@ body
 	
 	h1.logo
 	{
-		text-shadow: #fff 1px 1px 1px;
+		text-shadow: #fff 1px 1px 0px;
 		
 		span
 		{
@@ -23,6 +24,7 @@ body
 			display:block;
 			font-family: 'Jura', serif;
 			font-size:0.7em;
+			text-shadow: none;
 		}
 		
 		a

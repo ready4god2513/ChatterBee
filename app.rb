@@ -40,9 +40,8 @@ class ChatterBee < Sinatra::Base
   get "/" do
     @room = Room.where(:open => true).first(:order => :created_at.desc) || Room.create(:name => Room.generate_name, :open => true)
     @room.join(@user)
-    publish_room_count
     
-    erb :index
+    redirect to("/room/#{@room.name}")
   end
   
   get "/room/:name" do |name|

@@ -28,14 +28,16 @@
 <body>
 
 <div class="container">
-	<header class="row">
-		<h1 class="logo eightcol"><a href="/">jegit. <span>chat freely.</span></a></h1>
+	<header class="span-24 last">
+		<h1 class="logo span-12"><a href="/">jegit. <span>chat freely.</span></a></h1>
 	</header>
-	<div id="main" role="main" class="row">
-		<div class="container ninecol">
-			<%= yield %>
+	<div id="main" role="main" class="span-24 last">
+		<div class="span-18 append-1">
+			<div id="body" class="span-16 prepend-1 append-1">
+				<%= yield %>
+			</div>
 		</div>
-		<div class="twocol" id="proms">
+		<div class="span-4 last" id="sidebar">
 			<div id="social">
 				<div class="row">
 					<div class="company"><fb:like href="<%= request.url %>" send="false" action="like" show_faces="false" font="" layout="box_count"></fb:like></div>
@@ -51,35 +53,17 @@
 					<div class="company"><script src="http://www.stumbleupon.com/hostedbadge.php?s=5&r=<%= request.url %>"></script></div>
 				</div>
 			</div>
-			
-			<script type="text/javascript"><!--
-				google_ad_client = "ca-pub-6614690039109953";
-				/* sidebar */
-				google_ad_slot = "0098224985";
-				google_ad_width = 125;
-				google_ad_height = 125;
-			//-->
-			</script>
-			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-			
-		</div>
-	</div>
-	<div id="footer-promos" class="row">
-		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-6614690039109953";
-		/* jegit-footer */
-		google_ad_slot = "4150460869";
-		google_ad_width = 728;
-		google_ad_height = 90;
-		//-->
-		</script>
-		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-	</div>
-	<footer class="row" id="footer">
-		<div class="ninecol">		
+			<div id="sidebar-promos">
+				<%= erb "ads/sidebar".to_sym %>
+			</div>
 			<a href="http://pubnub.com?ref=jegit.com"><img src="/pubnub.png" alt="Powered by Pubnub"/></a>
-			<a href="/privacy">Privacy Policy</a>
 		</div>
+	</div>
+	<div id="footer-promos" class="span-18 last">
+		<%= erb "ads/footer".to_sym %>
+	</div>
+	<footer id="footer" class="span-24 last">
+		<a href="/privacy">Privacy Policy</a>
 	</footer>
 </div> <!--! end of #container -->
 

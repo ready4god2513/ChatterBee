@@ -237,173 +237,551 @@ table { border-collapse: collapse; border-spacing: 0; }
 .clearfix { zoom: 1; }
 
 
+/* --------------------------------------------------------------
 
-/* =============================================================================
-   PLACEHOLDER Media Queries for Responsive Design.
-   These override the primary ('mobile first') styles
-   Modify as content requires.
-   ========================================================================== */
+   reset.css
+   * Resets default browser CSS.
 
-@media only screen and (min-width: 480px) {
-  /* Style adjustments for viewports 480px and over go here */
+-------------------------------------------------------------- */
 
+html { 
+	margin:0; 
+	padding:0; 
+	border:0; 
 }
 
-@media only screen and (min-width: 768px) {
-  /* Style adjustments for viewports 768px and over go here */
+body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
 
+/* This helps to make newer HTML5 elements behave like DIVs in older browers */ 
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+    display:block;
+}
+
+/* Line-height should always be unitless! */
+body {
+  line-height: 1.5;
+  background: white; 
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { 
+	border-collapse: separate; 
+	border-spacing: 0; 
+}
+/* float:none prevents the span-x classes from breaking table-cell display */
+caption, th, td { 
+	text-align: left; 
+	font-weight: normal; 
+	float:none !important; 
+}
+table, th, td { 
+	vertical-align: middle; 
+}
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ''; }
+blockquote, q { quotes: "" ""; }
+
+/* Remove annoying border on linked images. */
+a img { border: none; }
+
+/* Remember to define your own focus styles! */
+:focus { outline: 0; }/* --------------------------------------------------------------
+
+   typography.css
+   * Sets up some sensible default typography.
+
+-------------------------------------------------------------- */
+
+/* Default font settings.
+   The font-size percentage is of 16px. (0.75 * 16px = 12px) */
+html { font-size:100.01%; }
+body {
+  font-size: 75%;
+  color: #222;
+  background: #fff;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 
-/* =============================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
- 
-@media print {
-  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
-  a, a:visited { color: #444 !important; text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
+/* Headings
+-------------------------------------------------------------- */
+
+h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
+
+h1 { font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
+h2 { font-size: 2em; margin-bottom: 0.75em; }
+h3 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
+h4 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+h5 { font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
+h6 { font-size: 1em; font-weight: bold; }
+
+h1 img, h2 img, h3 img,
+h4 img, h5 img, h6 img {
+  margin: 0;
 }
 
 
-/* CSS Resets */
+/* Text elements
+-------------------------------------------------------------- */
 
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
+p           { margin: 0 0 1.5em; }
+/* 
+	These can be used to pull an image at the start of a paragraph, so 
+	that the text flows around it (usage: <p><img class="left">Text</p>) 
+*/
+.left  			{ float: left !important; }
+p .left			{ margin: 1.5em 1.5em 1.5em 0; padding: 0; }
+.right 			{ float: right !important; }
+p .right 		{ margin: 1.5em 0 1.5em 1.5em; padding: 0; }
+
+a:focus,
+a:hover     { color: #09f; }
+a           { color: #06c; text-decoration: underline; }
+
+blockquote  { margin: 1.5em; color: #666; font-style: italic; }
+strong,dfn	{ font-weight: bold; }
+em,dfn      { font-style: italic; }
+dfn         { font-weight: bold; }
+sup, sub    { line-height: 0; }
+
+abbr,
+acronym     { border-bottom: 1px dotted #666; }
+address     { margin: 0 0 1.5em; font-style: italic; }
+del         { color:#666; }
+
+pre 				{ margin: 1.5em 0; white-space: pre; }
+pre,code,tt { font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5; }
 
 
-/* ==================================================================================================================== */
-/* ! The 1140px Grid V2 by Andy Taylor \ http://cssgrid.net \ http://www.twitter.com/andytlr \ http://www.andytlr.com   */
-/* ==================================================================================================================== */
+/* Lists
+-------------------------------------------------------------- */
 
+li ul,
+li ol       { margin:0; }
+ul, ol      { margin: 0 1.5em 1.5em 0; padding-left: 1.5em; }
+
+ul          { list-style-type: disc; }
+ol          { list-style-type: decimal; }
+
+dl          { margin: 0 0 1.5em 0; }
+dl dt       { font-weight: bold; }
+dd          { margin-left: 1.5em;}
+
+
+/* Tables
+-------------------------------------------------------------- */
+
+/* 
+	Because of the need for padding on TH and TD, the vertical rhythm 
+	on table cells has to be 27px, instead of the standard 18px or 36px 
+	of other elements. 
+*/ 
+
+table       { margin-bottom: 1.4em; width:100%; }
+th          { font-weight: bold; }
+thead th 		{ background: #c3d9ff; }
+th,td,caption { padding: 4px 10px 4px 5px; }
+/*
+	You can zebra-stripe your tables in outdated browsers by adding 
+	the class "even" to every other table row. 
+*/
+tbody tr:nth-child(even) td, 
+tbody tr.even td  { 
+	background: #e5ecf9; 
+}
+tfoot       { font-style: italic; }
+caption     { background: #eee; }
+
+
+/* Misc classes
+-------------------------------------------------------------- */
+
+.small      { font-size: .8em; margin-bottom: 1.875em; line-height: 1.875em; }
+.large      { font-size: 1.2em; line-height: 2.5em; margin-bottom: 1.25em; }
+.hide       { display: none; }
+
+.quiet      { color: #666; }
+.loud       { color: #000; }
+.highlight  { background:#ff0; }
+.added      { background:#060; color: #fff; }
+.removed    { background:#900; color: #fff; }
+
+.first      { margin-left:0; padding-left:0; }
+.last       { margin-right:0; padding-right:0; }
+.top        { margin-top:0; padding-top:0; }
+.bottom     { margin-bottom:0; padding-bottom:0; }
+/* --------------------------------------------------------------
+
+   grid.css
+   * Sets up an easy-to-use grid of 24 columns.
+
+   By default, the grid is 950px wide, with 24 columns
+   spanning 30px, and a 10px margin between columns.
+
+   If you need fewer or more columns, namespaces or semantic
+   element names, use the compressor script (lib/compress.rb)
+
+-------------------------------------------------------------- */
+
+/* A container should group all your columns. */
 .container {
-padding: 20px;
+  width: 1120px;
+  margin: 0 auto;
 }
 
-.row {
-width: 100%;
-max-width:1140px;
-min-width: 755px;
-margin: 0 auto;
-overflow: hidden;
-}
-
-.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
-margin-right: 3.8%;
-float: left;
-min-height: 1px;
-}
-
-.row .onecol {
-width: 4.85%;
-}
-
-.row .twocol {
-width: 13.45%;
-}
-
-.row .threecol {
-width: 22.05%;
-}
-
-.row .fourcol {
-width: 30.75%;
-}
-
-.row .fivecol {
-width: 39.45%;
-}
-
-.row .sixcol {
-width: 48%;
-}
-
-.row .sevencol {
-width: 56.75%;
-}
-
-.row .eightcol {
-width: 65.4%;
-}
-
-.row .ninecol {
-width: 74.05%;
-}
-
-.row .tencol {
-width: 82.7%;
-}
-
-.row .elevencol {
-width: 91.35%;
-}
-
-.row .twelvecol {
-width: 100%;
-float: left;
-}
-
-.last {
-margin-right: 0px;
-}
-
-img, object, embed {
-max-width: 100%;
-}
-
-img {
-	height: auto;
+/* Use this class on any .span / container to see the grid. */
+.showgrid {
+  background: url(grid.png);
 }
 
 
-/* Smaller screens */
+/* Columns
+-------------------------------------------------------------- */
 
-@media only screen and (max-width: 1023px) {
-
-	body {
-	line-height: 1.5em;
-	}
-	
-	}
-
-
-/* Mobile */
-
-@media handheld, only screen and (max-width: 767px) {
-
-	body {
-	-webkit-text-size-adjust: none;
-	}
-	
-	.row, body, .container {
-	width: 100%;
-	min-width: 0;
-	margin-left: 0px;
-	margin-right: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	}
-	
-	.row .onecol, .row .twocol, .row .threecol, .row .fourcol, .row .fivecol, .row .sixcol, .row .sevencol, .row .eightcol, .row .ninecol, .row .tencol, .row .elevencol, .row .twelvecol {
-	width: auto;
-	float: none;
-	margin-left: 0px;
-	margin-right: 0px;
-	padding-left: 20px;
-	padding-right: 20px;
-	}
-
-	#footer-promos
-	{
-		display:none;
-	}
+/* Sets up basic grid floating and margin. */
+.column, .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12, .span-13, .span-14, .span-15, .span-16, .span-17, .span-18, .span-19, .span-20, .span-21, .span-22, .span-23, .span-24 {
+  float: left;
+  margin-right: 8px;
 }
+
+/* The last column in a row needs this class. */
+.last { margin-right: 0; }
+
+/* Use these classes to set the width of a column. */
+.span-1  {width: 39px;}
+.span-2  {width: 86px;}
+.span-3  {width: 133px;}
+.span-4  {width: 180px;}
+.span-5  {width: 227px;}
+.span-6  {width: 274px;}
+.span-7  {width: 321px;}
+.span-8  {width: 368px;}
+.span-9  {width: 415px;}
+.span-10  {width: 462px;}
+.span-11  {width: 509px;}
+.span-12  {width: 556px;}
+.span-13  {width: 603px;}
+.span-14  {width: 650px;}
+.span-15  {width: 697px;}
+.span-16  {width: 744px;}
+.span-17  {width: 791px;}
+.span-18  {width: 838px;}
+.span-19  {width: 885px;}
+.span-20  {width: 932px;}
+.span-21  {width: 979px;}
+.span-22  {width: 1026px;}
+.span-23  {width: 1073px;}
+.span-24  {width: 1120px;}
+
+/* Use these classes to set the width of an input. */
+input.span-1, textarea.span-1, input.span-2, textarea.span-2, input.span-3, textarea.span-3, input.span-4, textarea.span-4, input.span-5, textarea.span-5, input.span-6, textarea.span-6, input.span-7, textarea.span-7, input.span-8, textarea.span-8, input.span-9, textarea.span-9, input.span-10, textarea.span-10, input.span-11, textarea.span-11, input.span-12, textarea.span-12, input.span-13, textarea.span-13, input.span-14, textarea.span-14, input.span-15, textarea.span-15, input.span-16, textarea.span-16, input.span-17, textarea.span-17, input.span-18, textarea.span-18, input.span-19, textarea.span-19, input.span-20, textarea.span-20, input.span-21, textarea.span-21, input.span-22, textarea.span-22, input.span-23, textarea.span-23, input.span-24, textarea.span-24 {
+  border-left-width: 1px;
+  border-right-width: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+input.span-1, textarea.span-1 { width: 27px; }
+input.span-2, textarea.span-2 { width: 74px; }
+input.span-3, textarea.span-3 { width: 121px; }
+input.span-4, textarea.span-4 { width: 168px; }
+input.span-5, textarea.span-5 { width: 215px; }
+input.span-6, textarea.span-6 { width: 262px; }
+input.span-7, textarea.span-7 { width: 309px; }
+input.span-8, textarea.span-8 { width: 356px; }
+input.span-9, textarea.span-9 { width: 403px; }
+input.span-10, textarea.span-10 { width: 450px; }
+input.span-11, textarea.span-11 { width: 497px; }
+input.span-12, textarea.span-12 { width: 544px; }
+input.span-13, textarea.span-13 { width: 591px; }
+input.span-14, textarea.span-14 { width: 638px; }
+input.span-15, textarea.span-15 { width: 685px; }
+input.span-16, textarea.span-16 { width: 732px; }
+input.span-17, textarea.span-17 { width: 779px; }
+input.span-18, textarea.span-18 { width: 826px; }
+input.span-19, textarea.span-19 { width: 873px; }
+input.span-20, textarea.span-20 { width: 920px; }
+input.span-21, textarea.span-21 { width: 967px; }
+input.span-22, textarea.span-22 { width: 1014px; }
+input.span-23, textarea.span-23 { width: 1061px; }
+input.span-24, textarea.span-24 { width: 1108px; }
+
+/* Add these to a column to append empty cols. */
+
+.append-1  { padding-right: 47px; } 
+.append-2  { padding-right: 94px; } 
+.append-3  { padding-right: 141px; } 
+.append-4  { padding-right: 188px; } 
+.append-5  { padding-right: 235px; } 
+.append-6  { padding-right: 282px; } 
+.append-7  { padding-right: 329px; } 
+.append-8  { padding-right: 376px; } 
+.append-9  { padding-right: 423px; } 
+.append-10  { padding-right: 470px; } 
+.append-11  { padding-right: 517px; } 
+.append-12  { padding-right: 564px; } 
+.append-13  { padding-right: 611px; } 
+.append-14  { padding-right: 658px; } 
+.append-15  { padding-right: 705px; } 
+.append-16  { padding-right: 752px; } 
+.append-17  { padding-right: 799px; } 
+.append-18  { padding-right: 846px; } 
+.append-19  { padding-right: 893px; } 
+.append-20  { padding-right: 940px; } 
+.append-21  { padding-right: 987px; } 
+.append-22  { padding-right: 1034px; } 
+.append-23  { padding-right: 1081px; } 
+
+/* Add these to a column to prepend empty cols. */
+
+.prepend-1  { padding-left: 47px; } 
+.prepend-2  { padding-left: 94px; } 
+.prepend-3  { padding-left: 141px; } 
+.prepend-4  { padding-left: 188px; } 
+.prepend-5  { padding-left: 235px; } 
+.prepend-6  { padding-left: 282px; } 
+.prepend-7  { padding-left: 329px; } 
+.prepend-8  { padding-left: 376px; } 
+.prepend-9  { padding-left: 423px; } 
+.prepend-10  { padding-left: 470px; } 
+.prepend-11  { padding-left: 517px; } 
+.prepend-12  { padding-left: 564px; } 
+.prepend-13  { padding-left: 611px; } 
+.prepend-14  { padding-left: 658px; } 
+.prepend-15  { padding-left: 705px; } 
+.prepend-16  { padding-left: 752px; } 
+.prepend-17  { padding-left: 799px; } 
+.prepend-18  { padding-left: 846px; } 
+.prepend-19  { padding-left: 893px; } 
+.prepend-20  { padding-left: 940px; } 
+.prepend-21  { padding-left: 987px; } 
+.prepend-22  { padding-left: 1034px; } 
+.prepend-23  { padding-left: 1081px; } 
+
+
+/* Border on right hand side of a column. */
+.border {
+  padding-right: 3px;
+  margin-right: 4px;
+  border-right: 1px solid #ddd;
+}
+
+/* Border with more whitespace, spans one column. */
+div.colborder {
+  padding-right: 26px;
+  margin-right: 28px;
+  border-right: 1px solid #eee;
+}
+
+
+/* Use these classes on an element to push it into the
+next column, or to pull it into the previous column.  */
+
+.pull-1 { margin-left: -47px; }
+.pull-2 { margin-left: -94px; }
+.pull-3 { margin-left: -141px; }
+.pull-4 { margin-left: -188px; }
+.pull-5 { margin-left: -235px; }
+.pull-6 { margin-left: -282px; }
+.pull-7 { margin-left: -329px; }
+.pull-8 { margin-left: -376px; }
+.pull-9 { margin-left: -423px; }
+.pull-10 { margin-left: -470px; }
+.pull-11 { margin-left: -517px; }
+.pull-12 { margin-left: -564px; }
+.pull-13 { margin-left: -611px; }
+.pull-14 { margin-left: -658px; }
+.pull-15 { margin-left: -705px; }
+.pull-16 { margin-left: -752px; }
+.pull-17 { margin-left: -799px; }
+.pull-18 { margin-left: -846px; }
+.pull-19 { margin-left: -893px; }
+.pull-20 { margin-left: -940px; }
+.pull-21 { margin-left: -987px; }
+.pull-22 { margin-left: -1034px; }
+.pull-23 { margin-left: -1081px; }
+.pull-24 { margin-left: -1128px; }
+
+.pull-1, .pull-2, .pull-3, .pull-4, .pull-5, .pull-6, .pull-7, .pull-8, .pull-9, .pull-10, .pull-11, .pull-12, .pull-13, .pull-14, .pull-15, .pull-16, .pull-17, .pull-18, .pull-19, .pull-20, .pull-21, .pull-22, .pull-23, .pull-24 {float: left; position:relative;}
+
+.push-1 { margin: 0 -47px 1.5em 47px; }
+.push-2 { margin: 0 -94px 1.5em 94px; }
+.push-3 { margin: 0 -141px 1.5em 141px; }
+.push-4 { margin: 0 -188px 1.5em 188px; }
+.push-5 { margin: 0 -235px 1.5em 235px; }
+.push-6 { margin: 0 -282px 1.5em 282px; }
+.push-7 { margin: 0 -329px 1.5em 329px; }
+.push-8 { margin: 0 -376px 1.5em 376px; }
+.push-9 { margin: 0 -423px 1.5em 423px; }
+.push-10 { margin: 0 -470px 1.5em 470px; }
+.push-11 { margin: 0 -517px 1.5em 517px; }
+.push-12 { margin: 0 -564px 1.5em 564px; }
+.push-13 { margin: 0 -611px 1.5em 611px; }
+.push-14 { margin: 0 -658px 1.5em 658px; }
+.push-15 { margin: 0 -705px 1.5em 705px; }
+.push-16 { margin: 0 -752px 1.5em 752px; }
+.push-17 { margin: 0 -799px 1.5em 799px; }
+.push-18 { margin: 0 -846px 1.5em 846px; }
+.push-19 { margin: 0 -893px 1.5em 893px; }
+.push-20 { margin: 0 -940px 1.5em 940px; }
+.push-21 { margin: 0 -987px 1.5em 987px; }
+.push-22 { margin: 0 -1034px 1.5em 1034px; }
+.push-23 { margin: 0 -1081px 1.5em 1081px; }
+.push-24 { margin: 0 -1128px 1.5em 1128px; }
+
+.push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23, .push-24 {float: left; position:relative;}
+
+
+/* Misc classes and elements
+-------------------------------------------------------------- */
+
+/* In case you need to add a gutter above/below an element */
+div.prepend-top, .prepend-top {
+	margin-top:1.5em;
+}
+div.append-bottom, .append-bottom {
+	margin-bottom:1.5em;
+}
+
+/* Use a .box to create a padded box inside a column.  */
+.box {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e5eCf9;
+}
+
+/* Use this to create a horizontal ruler across a column. */
+hr {
+  background: #ddd;
+  color: #ddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 1px;
+  margin: 0 0 1.4em;
+  border: none;
+}
+hr.space {
+  background: #fff;
+  color: #fff;
+  visibility: hidden;
+}
+
+
+/* Clearing floats without extra markup
+   Based on How To Clear Floats Without Structural Markup by PiE
+   [http://www.positioniseverything.net/easyclearing.html] */
+
+.clearfix:after, .container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow:hidden;
+}
+.clearfix, .container {display: block;}
+
+/* Regular clearing
+   apply to column that should drop below previous ones. */
+
+.clear { clear:both; }
+/* --------------------------------------------------------------
+
+   forms.css
+   * Sets up some default styling for forms
+   * Gives you classes to enhance your forms
+
+   Usage:
+   * For text fields, use class .title or .text
+   * For inline forms, use .inline (even when using columns)
+
+-------------------------------------------------------------- */
+
+/* 
+	A special hack is included for IE8 since it does not apply padding 
+	correctly on fieldsets
+ */ 
+label       { font-weight: bold; }
+fieldset    { padding:0 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
+legend      { font-weight: bold; font-size:1.2em; margin-top:-0.2em; margin-bottom:1em; }
+
+fieldset, #IE8#HACK { padding-top:1.4em; } 
+legend, #IE8#HACK { margin-top:0; margin-bottom:0; }
+
+/* Form fields
+-------------------------------------------------------------- */
+
+/* 
+  Attribute selectors are used to differentiate the different types 
+  of input elements, but to support old browsers, you will have to 
+  add classes for each one. ".title" simply creates a large text  
+  field, this is purely for looks.
+ */
+input[type=text], input[type=password],
+input.text, input.title,
+textarea {
+  background-color:#fff;
+  border:1px solid #bbb;
+}
+input[type=text]:focus, input[type=password]:focus,
+input.text:focus, input.title:focus,
+textarea:focus {
+  border-color:#666;
+}
+select { background-color:#fff; border-width:1px; border-style:solid; }
+
+input[type=text], input[type=password],
+input.text, input.title,
+textarea, select {
+  margin:0.5em 0;
+}
+
+input.text,
+input.title   { width: 300px; padding:5px; }
+input.title   { font-size:1.5em; }
+textarea      { width: 390px; height: 250px; padding:5px; }
+
+/* 
+  This is to be used on forms where a variety of elements are 
+  placed side-by-side. Use the p tag to denote a line. 
+ */
+form.inline { line-height:3; }
+form.inline p { margin-bottom:0; }
+
+
+/* Success, info, notice and error/alert boxes
+-------------------------------------------------------------- */
+
+.error,
+.alert, 
+.notice,
+.success, 
+.info 			{ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.notice     { background: #fff6bf; color: #514721; border-color: #ffd324; }
+.success    { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.info 			{ background: #d5edf8; color: #205791; border-color: #92cae4; }
+.error a, .alert a { color: #8a1f11; }
+.notice a   { color: #514721; }
+.success a  { color: #264409; }
+.info a			{ color: #205791; }

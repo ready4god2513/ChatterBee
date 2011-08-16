@@ -2,7 +2,7 @@
 
 body
 {
-	background:url(/texture.png) repeat top center #AB423F;
+	background:url(/bg.png) repeat;
 	color:#222;
 	font-family: 'Jura', serif;
 	margin:10px auto;
@@ -59,8 +59,7 @@ a
 	
 	.container
 	{
-		border:1px solid #fff;
-		box-shadow: 0 0 5px #fff;
+		border:4px solid #fff;
 	}
 	
 	#auth-options

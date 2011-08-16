@@ -2,7 +2,7 @@
 
 body
 {
-	background:url(/map.png) no-repeat center #f8f8f8;
+	background:url(http://joshuasortino.com/public/images/backgrounds/texture.png) repeat top center #AB423F;
 	color:#222;
 	font-family: 'Jura', serif;
 	margin:10px auto;
@@ -16,21 +16,19 @@ body
 	h1.logo
 	{
 		
-		color:#222;
+		color:#fff;
 		
 		span
 		{
-			color:#0d98ba;
+			color:#fff;
 			display:block;
 			font-family: 'Jura', serif;
 			font-size:0.7em;
-			position:relative;
-			left:60px;
 		}
 		
 		a
 		{
-			color:#222 !important;
+			color:#fff !important;
 		}
 		
 		img
@@ -42,11 +40,6 @@ body
 	}
 }
 
-.logo
-{
-	color:#FF1493 !important;
-}
-
 a
 {
 	color:#0d98ba;
@@ -55,12 +48,19 @@ a
 
 #main
 {
-	
+	color:#222;
 	margin-bottom:20px;
 	
 	.ninecol
 	{
-		background:rgba(255, 255, 255, 0.5);
+		background:rgba(255, 255, 255, 0.8);
+		
+	}
+	
+	.container
+	{
+		border:1px solid #fff;
+		box-shadow: 0 0 5px #fff;
 	}
 	
 	#auth-options
@@ -78,7 +78,7 @@ a
 
 			.fields
 			{
-				background:rgba(255, 255, 255, 0.9);
+				background:rgba(255, 255, 255, 0.2);
 				margin:3% 0;
 				padding:5px;
 
@@ -149,7 +149,9 @@ a
 				    box-shadow: inset 0 1px 0 0 #a5b9d9;
 				    cursor: pointer; 
 				}
-				 input[type=submit]:active {
+				
+				 input[type=submit]:active 
+				{
 				    border: 1px solid #546685;
 				    -webkit-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
 				    -moz-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
@@ -277,4 +279,9 @@ a
 	border-top:#e8e8e8;
 	margin:50px auto;
 	padding:10px;
+	
+	a
+	{
+		color:#fff;
+	}
 }

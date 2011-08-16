@@ -11,7 +11,6 @@ gem "pubnub-ruby"
 gem "uglifier"
 gem "mongo_mapper"
 gem "bson_ext"
-gem "compass"
 
 group :development do
 	gem "capistrano"

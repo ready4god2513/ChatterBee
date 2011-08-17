@@ -110,7 +110,7 @@ class ChatterBee < Sinatra::Base
   
   
   def auth_needed?
-    !signed_in? && !(request.path_info =~ /auth|privacy|convert-location|\./)
+    !signed_in? && !(request.path_info =~ /auth|privacy|convert-location|facebook-chat|\./)
   end
   
   def signed_in?

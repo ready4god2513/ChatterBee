@@ -80,7 +80,7 @@ a
 				.actions
 				{
 					margin:20px 0;
-					text-align:right;
+					text-align:left;
 
 					input[type=submit]
 					{
@@ -233,6 +233,11 @@ a
 		padding-top:20px;
 		padding-bottom:20px;
 		text-align:center;
+		
+		#pubnub-referral
+		{
+			margin:20px 0;
+		}
 
 		div#social
 		{

@@ -65,7 +65,7 @@ class ChatterBee < Sinatra::Base
     publish_room_count
   end
   
-  get "/facebook-chat/?" do
+  post "/facebook-chat/?" do
     erb :facebook, :layout => false
   end
   

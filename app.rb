@@ -31,6 +31,7 @@ class ChatterBee < Sinatra::Base
   
   use OmniAuth::Builder do
     provider :facebook, "261061570588802", "b8393cb5960916a7df9ff5954b236739"
+    provider :twitter, "2I4tbMUdkYlscDnhLQhbqw", "Nw7oaPzt6HfgSS42K57BwdjwAfzLbmxnp2LOyxohws"
   end
   
   

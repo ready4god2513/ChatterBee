@@ -89,7 +89,7 @@ class ChatterBee < Sinatra::Base
   get "/auth/facebook/callback" do
     @user = User.create(
       :name => request.env["omniauth.auth"]["user_info"]["nickname"],
-      :token => request.env["omniauth.auth"]["credentials"]["token"]
+      :token => request.env["omniauth.auth"]["credentials"]["token"],
       :location => nil, 
       :gender => nil
     )

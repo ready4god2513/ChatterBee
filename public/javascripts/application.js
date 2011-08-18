@@ -100,7 +100,7 @@ var chatter = new function()
 		
 		if(message.status == "left")
 		{
-			self.chatroom.addLine("<span class='left'>" + message.user + " " + message.message + "</span>");
+			self.chatroom.addLine("<span class='left-chat'>" + message.user + " " + message.message + "</span>");
 		}
 		else if(message.status == "joined")
 		{

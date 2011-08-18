@@ -74,6 +74,7 @@ class ChatterBee < Sinatra::Base
   end
   
   post "/facebook-chat/?" do
+    redirect to("/") if signed_in?
     redirect to("/auth/facebook")
   end
   

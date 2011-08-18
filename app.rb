@@ -66,8 +66,20 @@ class ChatterBee < Sinatra::Base
     @room = Room.find(id)
     redirect to("/") if @room.nil?
     
+    @pubnub.publish({
+      "channel" => @room.name,
+      "message" => {
+        "message" => "has left the chat.",
+        "status" => "left",
+        "user" => @user.name,
+        "uuid" => 10
+      }
+    })
+    
     @room.leave(@user)
     publish_room_count
+    
+    redirect to("/")
   end
   
   post "/facebook-chat/?" do

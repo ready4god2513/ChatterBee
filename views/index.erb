@@ -13,4 +13,6 @@
 	var user = "<%= @user.name %>";
 </script>
 
-<a href="/print/<%= @room.name %>" class="print-convo" target="_blank">Great conversation?  Print it.</a>
+<div id="below-chat-links">
+	<a href="/leave/<%= @room.id %>">Leave the room</a> | <a href="/print/<%= @room.name %>" =target="_blank">Great conversation?  Print it.</a>
+</div>

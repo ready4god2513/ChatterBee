@@ -1,15 +1,10 @@
 require "bundler/setup"
 require "sinatra/base"
-require "omniauth"
-require "openssl"
-require "openid/store/filesystem"
 require "pubnub"
 require "mongo_mapper"
 require "sass"
 require "erb"
 require "geocoder"
-
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 MongoMapper.connection = Mongo::Connection.new("localhost", 27017, :pool_size => 5, :timeout => 5)
 MongoMapper.database = "jegit"
@@ -74,8 +69,7 @@ class ChatterBee < Sinatra::Base
   end
   
   post "/facebook-chat/?" do
-    redirect to("/") if signed_in?
-    redirect to("/auth/facebook")
+    redirect to("/auth/")
   end
   
   get "/style.css" do
@@ -87,16 +81,6 @@ class ChatterBee < Sinatra::Base
     erb :auth
   end
   
-  get "/auth/facebook/callback" do
-    @user = User.create(
-      :name => request.env["omniauth.auth"]["user_info"]["nickname"],
-      :token => request.env["omniauth.auth"]["credentials"]["token"],
-      :location => nil, 
-      :gender => nil
-    )
-
-    login!
-  end
   
   post "/auth/sign-in" do
     @user = User.create(
@@ -106,10 +90,6 @@ class ChatterBee < Sinatra::Base
     )
     
     login!
-  end
-  
-  get "/auth/failure" do
-    "In order to use this site you must allow us access to your Facebook data"
   end
   
   get "/signout" do

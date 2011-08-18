@@ -5,6 +5,7 @@ class User
   key :name, String
   key :location, String
   key :gender, String
+  key :token, String
   timestamps!
   
   

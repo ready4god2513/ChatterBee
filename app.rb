@@ -5,6 +5,11 @@ require "mongo_mapper"
 require "sass"
 require "erb"
 require "geocoder"
+require "omniauth"
+require "openssl"
+require "openid/store/filesystem"
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 MongoMapper.connection = Mongo::Connection.new("localhost", 27017, :pool_size => 5, :timeout => 5)
 MongoMapper.database = "jegit"
@@ -24,6 +29,10 @@ class ChatterBee < Sinatra::Base
   
   use Rack::Session::Cookie
   
+  use OmniAuth::Builder do
+    provider :facebook, "261061570588802", "b8393cb5960916a7df9ff5954b236739"
+  end
+  
   
   before do
     @pubkey = "pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e"
@@ -33,7 +42,7 @@ class ChatterBee < Sinatra::Base
     @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
     @user = User.find(session[:id]) || nil
     
-    redirect to("/auth") if auth_needed?
+    redirect to("/auth/") if auth_needed?
   end
     
   
@@ -83,7 +92,11 @@ class ChatterBee < Sinatra::Base
   end
   
   post "/facebook-chat/?" do
-    redirect to("/auth/")
+    if signed_in?
+      redirect to("/")
+    else
+      redirect to("/auth/facebook")
+    end
   end
   
   get "/:style.css" do |style|
@@ -95,6 +108,16 @@ class ChatterBee < Sinatra::Base
     erb :auth
   end
   
+  get "/auth/:name/callback" do
+    @user = User.create(
+      :name => request.env["omniauth.auth"]["user_info"]["nickname"], 
+      :location => nil, 
+      :token => request.env["omniauth.auth"]["credentials"]["token"],
+      :gender => nil
+    )
+
+    login!
+  end
   
   post "/auth/sign-in" do
     @user = User.create(
@@ -107,9 +130,6 @@ class ChatterBee < Sinatra::Base
   end
   
   get "/signout" do
-    @user.destroy unless @user.nil? # We don"t need them in the database any longer
-    publish_chatter_count
-    
     session.delete(:user)
     redirect to("/auth")
   end
@@ -136,17 +156,8 @@ class ChatterBee < Sinatra::Base
   end
   
   def login!
-    session[:id] = @user.id
-    publish_chatter_count
-    
+    session[:id] = @user.id    
     redirect to("/")
-  end
-  
-  def publish_chatter_count
-    @pubnub.publish({
-      "channel" => "chatters-count",
-      "message" => User.count
-    })
   end
   
   def publish_room_count

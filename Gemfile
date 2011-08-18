@@ -11,6 +11,7 @@ gem "uglifier"
 gem "mongo_mapper"
 gem "bson_ext"
 gem "bourbon"
+gem "omniauth", ">= 0.2.6"
 
 group :development do
 	gem "capistrano"

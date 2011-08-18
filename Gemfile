@@ -12,6 +12,9 @@ gem "mongo_mapper"
 gem "bson_ext"
 gem "bourbon"
 gem "omniauth", ">= 0.2.6"
+gem "rack-flash"
+gem "rack-timeout"
+gem "fb_graph"
 
 group :development do
 	gem "capistrano"

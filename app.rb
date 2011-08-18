@@ -8,6 +8,8 @@ require "geocoder"
 require "omniauth"
 require "openssl"
 require "openid/store/filesystem"
+require "rack/flash"
+require "rack/timeout"
 
 # We moved lots of helpers into a separate file. These are all things that are
 # useful throughout the rest of the application.

@@ -96,7 +96,7 @@ class ChatterBee < Sinatra::Base
     if signed_in?
       redirect to("/")
     else
-      redirect to("/auth/facebook")
+      erb :facebook_auth
     end
   end
   
@@ -109,7 +109,7 @@ class ChatterBee < Sinatra::Base
     erb :auth
   end
   
-  get "/auth/:name/callback" do
+  get "/auth/facebook/callback" do
     @user = User.create(
       :name => request.env["omniauth.auth"]["user_info"]["nickname"], 
       :location => nil, 
@@ -118,6 +118,7 @@ class ChatterBee < Sinatra::Base
     )
 
     login!
+    redirect to("https://apps.facebook.com/jegit-chat/")
   end
   
   post "/auth/sign-in" do
@@ -128,6 +129,7 @@ class ChatterBee < Sinatra::Base
     )
     
     login!
+    redirect to("/")
   end
   
   get "/signout" do
@@ -159,7 +161,6 @@ class ChatterBee < Sinatra::Base
   
   def login!
     session[:id] = @user.id    
-    redirect to("/")
   end
   
   def publish_room_count

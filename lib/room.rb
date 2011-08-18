@@ -27,11 +27,14 @@ class Room
   
   def leave(user)
     self.users.delete(user)
-    self.destroy unless self.users.count > 1 # Get rid of the room if it is now empty
+    if self.users.count < 2 # Get rid of the room if it is now empty
+      self.open = false
+      self.save
+    end
   end
   
   def open?
-    self.users.count <= 1
+    self.users.count < 2
   end
   
   def history(pubnub)

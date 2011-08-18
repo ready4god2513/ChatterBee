@@ -1,7 +1,7 @@
 class Jegit
   
   get "/auth/?" do
-    redirect to("/") if signed_in?
+    redirect to("/") if current_user
     erb :auth
   end
   
@@ -13,8 +13,16 @@ class Jegit
       :gender => nil
     )
 
-    login!
+    session[:user_id] = @user.id
     redirect to("https://apps.facebook.com/jegit-chat/")
+  end
+  
+  get "/signout" do
+    redirect to("/auth/") unless current_user
+    
+    current_user.destroy # We don"t need them in the database any longer
+    session.delete(:user)
+    redirect to("/auth")
   end
   
   post "/auth/sign-in" do
@@ -24,35 +32,16 @@ class Jegit
       :gender => params[:gender]
     )
     
-    login!
+    session[:user_id] = @user.id
     redirect to("/")
-  end
-  
-  get "/signout" do
-    @user.destroy # We don"t need them in the database any longer
-    session.delete(:user)
-    redirect to("/auth")
   end
   
   post "/convert-location" do
     addresses = Geocoder.search("40.586539,-122.391675")
     location = "#{addresses.first.city}, #{addresses.first.state}, #{addresses.first.country}"
-    @user.update_location(location) if signed_in?
+    current_user.update_location(location) if current_user
     
     location
-  end
-  
-  
-  def auth_needed?
-    !signed_in? && !(request.path_info =~ /auth|privacy|convert-location|facebook-chat|\./)
-  end
-  
-  def signed_in?
-    !@user.nil?
-  end
-  
-  def login!
-    session[:id] = @user.id    
   end
   
 end

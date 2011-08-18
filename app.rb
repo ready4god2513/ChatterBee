@@ -28,17 +28,17 @@ Dir.glob("models/*.rb").each { |r| require_relative r }
 
 class Jegit < Sinatra::Base
   
-  before do
-    @user = User.find(session[:user_id]) || nil
-    redirect to("/auth/") if auth_needed?
-  end
-  
   not_found do
-    erb :not_found
+    erb "static/404".to_sym
   end
   
   error do
-    erb :error
+    erb "static/error".to_sym
+  end
+  
+  
+  def current_user
+    User.find(session[:user_id])
   end
   
 end

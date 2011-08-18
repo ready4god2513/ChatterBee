@@ -2,6 +2,8 @@ class Jegit
   
   
   before do
+    redirect to("/auth/") unless current_user
+    
     @pubkey = "pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e"
     @subkey = "sub-7e2e745c-c38c-11e0-a0a5-53ec83638759"
     @secretkey = "sec-a58d32c9-868c-4ab6-b70e-6555bee4758e"

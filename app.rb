@@ -46,13 +46,16 @@ class ChatterBee < Sinatra::Base
   
   get "/room/:name" do |name|
     @room = Room.find_by_name(name)
-    publish_room_count
+    redirect to("/") if @room.nil?
     
+    publish_room_count
     erb :index
   end
   
   get "/print/:name" do |name|
     @room = Room.find_by_name(name)
+    redirect to("/") if @room.nil?
+    
     @messages = @room.history(@pubnub)
     
     attachment "jegit-archive-#{name}.html"
@@ -61,6 +64,8 @@ class ChatterBee < Sinatra::Base
   
   get "/leave/:id" do |id|
     @room = Room.find(id)
+    redirect to("/") if @room.nil?
+    
     @room.leave(@user)
     publish_room_count
   end
@@ -90,7 +95,7 @@ class ChatterBee < Sinatra::Base
   end
   
   get "/signout" do
-    @user.destroy # We don"t need them in the database any longer
+    @user.destroy unless @user.nil? # We don"t need them in the database any longer
     publish_chatter_count
     
     session.delete(:user)

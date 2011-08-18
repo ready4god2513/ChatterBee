@@ -69,8 +69,8 @@ class ChatterBee < Sinatra::Base
     redirect to("/auth/")
   end
   
-  get "/style.css" do
-    scss :style
+  get "/:style.css" do |style|
+    scss style.to_sym
   end
   
   get "/auth/?" do

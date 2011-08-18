@@ -185,7 +185,8 @@ a
 		min-width:90%;
 		max-width:100%;
 		margin:20px 0;
-		height:350px;
+		min-height:100px;
+		max-height:300px;
 		overflow:auto;
 
 		li
@@ -269,7 +270,7 @@ a
 
 #say-something
 {
-	width:95%;
+	width:90%;
 }
 
 #username

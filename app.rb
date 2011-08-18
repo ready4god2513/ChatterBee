@@ -131,6 +131,7 @@ class ChatterBee < Sinatra::Base
   end
   
   get "/signout" do
+    @user.destroy # We don"t need them in the database any longer
     session.delete(:user)
     redirect to("/auth")
   end

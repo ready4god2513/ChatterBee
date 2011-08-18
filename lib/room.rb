@@ -29,6 +29,8 @@ class Room
     self.users.delete(user)
     self.open = open?
     self.save!
+    
+    self.delete if self.users.count == 0 # Get rid of the room if it is now empty
   end
   
   def open?

@@ -17,9 +17,9 @@ Dir.glob("app/models/*.rb").each { |r| require_relative r }
 
 class Jegit < Sinatra::Base
   
-  not_found do
-    erb "static/404".to_sym
-  end
+  # not_found do
+  #   erb "static/404".to_sym
+  # end
   
   error do
     @error = env['sinatra.error']

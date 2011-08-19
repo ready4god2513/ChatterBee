@@ -11,19 +11,24 @@ class Jegit < Sinatra::Base; end;
 require_relative "config/config"
 
 # Include all models and controllers
-Dir.glob("controllers/*.rb").each { |r| require_relative r }
-Dir.glob("models/*.rb").each { |r| require_relative r }
+Dir.glob("app/controllers/*.rb").each { |r| require_relative r }
+Dir.glob("app/models/*.rb").each { |r| require_relative r }
 
 
 class Jegit < Sinatra::Base
   
-  not_found do
-    erb "static/404".to_sym
-  end
+  # not_found do
+  #   erb "static/404".to_sym
+  # end
   
   error do
     @error = env['sinatra.error']
     erb "static/error".to_sym
+  end
+  
+  get :stylesheets, :map => "/stylesheets/:name.css" do
+    content_type "text/css", :charset => "utf-8"
+    scss "stylesheets/#{params[:name]}".to_sym
   end
   
   def load_pubnub

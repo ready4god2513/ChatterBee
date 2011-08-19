@@ -9,15 +9,16 @@ require "openid/store/filesystem"
 require "rack/flash"
 require "rack/timeout"
 require "padrino-helpers"
-require "padrino-core/application/routing"
+require "padrino"
+require_relative "../app/lib/sass_init"
 
 class Jegit
   
   configure do
     enable :static
     enable :sessions
-    set :scss, :style => :compact
     set :session_secret, "8y38H@(@DKW9eur93j!ieJHDJHDhe8#^@(!)})"
+    set :views, File.expand_path("app/views")
   end
     
   use OmniAuth::Builder do
@@ -35,6 +36,8 @@ class Jegit
   MongoMapper.connection = Mongo::Connection.new("localhost", 27017, :pool_size => 5, :timeout => 5)
   MongoMapper.database = "jegit"
   
+  
+  register SassInitializer
   register Padrino::Helpers
   register Padrino::Routing
   

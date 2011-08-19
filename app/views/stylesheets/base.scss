@@ -1,33 +1,33 @@
 /*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
+* HTML5 Boilerplate
+*
+* What follows is the result of much research on cross-browser styling.
+* Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+* Kroc Camen, and the H5BP dev community and team.
+*/
 
 
 /* =============================================================================
-   HTML5 element display
-   ========================================================================== */
+HTML5 element display
+========================================================================== */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 
 
 /* =============================================================================
-   Base
-   ========================================================================== */
+Base
+========================================================================== */
 
 /*
- * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
- *    http://clagnut.com/blog/348/#c790
- * 2. Force vertical scrollbar in non-IE
- * 3. Remove Android and iOS tap highlight color to prevent entire container being highlighted
- *    www.yuiblog.com/blog/2010/10/01/quick-tip-customizing-the-mobile-safari-tap-highlight-color/
- * 4. Prevent iOS text size adjust on device orientation change, without disabling user zoom
- *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
- */
+* 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+*    http://clagnut.com/blog/348/#c790
+* 2. Force vertical scrollbar in non-IE
+* 3. Remove Android and iOS tap highlight color to prevent entire container being highlighted
+*    www.yuiblog.com/blog/2010/10/01/quick-tip-customizing-the-mobile-safari-tap-highlight-color/
+* 4. Prevent iOS text size adjust on device orientation change, without disabling user zoom
+*    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+*/
 
 html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
@@ -36,18 +36,18 @@ body { margin: 0; font-size: 13px; line-height: 1.231; }
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 /* 
- * These selection declarations have to be separate
- * No text-shadow: twitter.com/miketaylr/status/12228805301
- * Also: hot pink!
- */
+* These selection declarations have to be separate
+* No text-shadow: twitter.com/miketaylr/status/12228805301
+* Also: hot pink!
+*/
 
 ::-moz-selection { background: #e8e8e8; color: #333; text-shadow: none; }
 ::selection { background: #e8e8e8; color: #333; text-shadow: none; }
 
 
 /* =============================================================================
-   Links
-   ========================================================================== */
+Links
+========================================================================== */
 
 a { color: #00e; }
 a:visited { color: #551a8b; }
@@ -58,8 +58,8 @@ a:hover, a:active { outline: 0; }
 
 
 /* =============================================================================
-   Typography
-   ========================================================================== */
+Typography
+========================================================================== */
 
 abbr[title] { border-bottom: 1px dotted; }
 
@@ -93,8 +93,8 @@ sub { bottom: -0.25em; }
 
 
 /* =============================================================================
-   Lists
-   ========================================================================== */
+Lists
+========================================================================== */
 
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
@@ -102,43 +102,43 @@ nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
 
 
 /* =============================================================================
-   Embedded content
-   ========================================================================== */
+Embedded content
+========================================================================== */
 
 /*
- * Improve image quality when scaled in IE7
- * code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
- */
+* Improve image quality when scaled in IE7
+* code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+*/
 
 img { border: 0; -ms-interpolation-mode: bicubic; }
 
 /*
- * Correct overflow displayed oddly in IE9 
- */
+* Correct overflow displayed oddly in IE9 
+*/
 
 svg:not(:root) {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 
 /* =============================================================================
-   Figures
-   ========================================================================== */
+Figures
+========================================================================== */
 
 figure { margin: 0; }
 
 
 /* =============================================================================
-   Forms
-   ========================================================================== */
+Forms
+========================================================================== */
 
 form { margin: 0; }
 fieldset { border: 0; margin: 0; padding: 0; }
 
 /* 
- * 1. Correct color not inheriting in IE6/7/8/9 
- * 2. Correct alignment displayed oddly in IE6/7 
- */
+* 1. Correct color not inheriting in IE6/7/8/9 
+* 2. Correct alignment displayed oddly in IE6/7 
+*/
 
 legend { border: 0; *margin-left: -7px; padding: 0; }
 
@@ -146,38 +146,38 @@ legend { border: 0; *margin-left: -7px; padding: 0; }
 label { cursor: pointer; }
 
 /*
- * 1. Correct font-size not inheriting in all browsers
- * 2. Remove margins in FF3/4 S5 Chrome
- * 3. Define consistent vertical alignment display in all browsers
- */
+* 1. Correct font-size not inheriting in all browsers
+* 2. Remove margins in FF3/4 S5 Chrome
+* 3. Define consistent vertical alignment display in all browsers
+*/
 
 button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
 
 /*
- * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
- * 2. Correct inner spacing displayed oddly in IE6/7
- */
+* 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+* 2. Correct inner spacing displayed oddly in IE6/7
+*/
 
 button, input { line-height: normal; *overflow: visible; }
 
 /*
- * 1. Display hand cursor for clickable form elements
- * 2. Allow styling of clickable form elements in iOS
- */
+* 1. Display hand cursor for clickable form elements
+* 2. Allow styling of clickable form elements in iOS
+*/
 
 button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
 
 /*
- * Consistent box sizing and appearance
- */
+* Consistent box sizing and appearance
+*/
 
 input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
 input[type="search"] { -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
 
 /* 
- * Remove inner padding and border in FF3/4
- * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ 
- */
+* Remove inner padding and border in FF3/4
+* www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ 
+*/
 
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
@@ -190,16 +190,16 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
 
 
 /* =============================================================================
-   Tables
-   ========================================================================== */
+Tables
+========================================================================== */
 
 table { border-collapse: collapse; border-spacing: 0; }
 
 
 /* =============================================================================
-   Primary styles
-   Author: 
-   ========================================================================== */
+Primary styles
+Author: 
+========================================================================== */
 
 
 
@@ -209,20 +209,20 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 
 /* =============================================================================
-   Non-semantic helper classes
-   Please define your styles before this section.
-   ========================================================================== */
+Non-semantic helper classes
+Please define your styles before this section.
+========================================================================== */
 
 /* For image replacement */
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .ir br { display: none; }
 
 /* Hide for both screenreaders and browsers:
-   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+css-discuss.incutio.com/wiki/Screenreader_Visibility */
 .hidden { display: none; visibility: hidden; }
 
 /* Hide only visually, but have it available for screenreaders: by Jon Neal.
-  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 
 /* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
@@ -239,8 +239,8 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* --------------------------------------------------------------
 
-   reset.css
-   * Resets default browser CSS.
+reset.css
+* Resets default browser CSS.
 
 -------------------------------------------------------------- */
 
@@ -258,26 +258,26 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, dialog, figure, footer, header,
 hgroup, nav, section {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
 }
 
 /* This helps to make newer HTML5 elements behave like DIVs in older browers */ 
 article, aside, dialog, figure, footer, header,
 hgroup, nav, section {
-    display:block;
+	display:block;
 }
 
 /* Line-height should always be unitless! */
 body {
-  line-height: 1.5;
-  background: white; 
+	line-height: 1.5;
+	background: white; 
 }
 
 /* Tables still need 'cellspacing="0"' in the markup. */
@@ -305,19 +305,19 @@ a img { border: none; }
 /* Remember to define your own focus styles! */
 :focus { outline: 0; }/* --------------------------------------------------------------
 
-   typography.css
-   * Sets up some sensible default typography.
+typography.css
+* Sets up some sensible default typography.
 
 -------------------------------------------------------------- */
 
 /* Default font settings.
-   The font-size percentage is of 16px. (0.75 * 16px = 12px) */
+The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 html { font-size:100.01%; }
 body {
-  font-size: 75%;
-  color: #222;
-  background: #fff;
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	color: #222;
+	background: #fff;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 
@@ -335,7 +335,7 @@ h6 { font-size: 1em; font-weight: bold; }
 
 h1 img, h2 img, h3 img,
 h4 img, h5 img, h6 img {
-  margin: 0;
+	margin: 0;
 }
 
 
@@ -344,8 +344,8 @@ h4 img, h5 img, h6 img {
 
 p           { margin: 0 0 1.5em; }
 /* 
-	These can be used to pull an image at the start of a paragraph, so 
-	that the text flows around it (usage: <p><img class="left">Text</p>) 
+These can be used to pull an image at the start of a paragraph, so 
+that the text flows around it (usage: <p><img class="left">Text</p>) 
 */
 .left  			{ float: left !important; }
 p .left			{ margin: 1.5em 1.5em 1.5em 0; padding: 0; }
@@ -390,9 +390,9 @@ dd          { margin-left: 1.5em;}
 -------------------------------------------------------------- */
 
 /* 
-	Because of the need for padding on TH and TD, the vertical rhythm 
-	on table cells has to be 27px, instead of the standard 18px or 36px 
-	of other elements. 
+Because of the need for padding on TH and TD, the vertical rhythm 
+on table cells has to be 27px, instead of the standard 18px or 36px 
+of other elements. 
 */ 
 
 table       { margin-bottom: 1.4em; width:100%; }
@@ -400,8 +400,8 @@ th          { font-weight: bold; }
 thead th 		{ background: #c3d9ff; }
 th,td,caption { padding: 4px 10px 4px 5px; }
 /*
-	You can zebra-stripe your tables in outdated browsers by adding 
-	the class "even" to every other table row. 
+You can zebra-stripe your tables in outdated browsers by adding 
+the class "even" to every other table row. 
 */
 tbody tr:nth-child(even) td, 
 tbody tr.even td  { 
@@ -430,26 +430,26 @@ caption     { background: #eee; }
 .bottom     { margin-bottom:0; padding-bottom:0; }
 /* --------------------------------------------------------------
 
-   grid.css
-   * Sets up an easy-to-use grid of 24 columns.
+grid.css
+* Sets up an easy-to-use grid of 24 columns.
 
-   By default, the grid is 950px wide, with 24 columns
-   spanning 30px, and a 10px margin between columns.
+By default, the grid is 950px wide, with 24 columns
+spanning 30px, and a 10px margin between columns.
 
-   If you need fewer or more columns, namespaces or semantic
-   element names, use the compressor script (lib/compress.rb)
+If you need fewer or more columns, namespaces or semantic
+element names, use the compressor script (lib/compress.rb)
 
 -------------------------------------------------------------- */
 
 /* A container should group all your columns. */
 .container {
-  width: 1120px;
-  margin: 0 auto;
+	width: 1120px;
+	margin: 0 auto;
 }
 
 /* Use this class on any .span / container to see the grid. */
 .showgrid {
-  background: url(grid.png);
+	background: url(grid.png);
 }
 
 
@@ -458,8 +458,8 @@ caption     { background: #eee; }
 
 /* Sets up basic grid floating and margin. */
 .column, .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12, .span-13, .span-14, .span-15, .span-16, .span-17, .span-18, .span-19, .span-20, .span-21, .span-22, .span-23, .span-24 {
-  float: left;
-  margin-right: 8px;
+	float: left;
+	margin-right: 8px;
 }
 
 /* The last column in a row needs this class. */
@@ -493,10 +493,10 @@ caption     { background: #eee; }
 
 /* Use these classes to set the width of an input. */
 input.span-1, textarea.span-1, input.span-2, textarea.span-2, input.span-3, textarea.span-3, input.span-4, textarea.span-4, input.span-5, textarea.span-5, input.span-6, textarea.span-6, input.span-7, textarea.span-7, input.span-8, textarea.span-8, input.span-9, textarea.span-9, input.span-10, textarea.span-10, input.span-11, textarea.span-11, input.span-12, textarea.span-12, input.span-13, textarea.span-13, input.span-14, textarea.span-14, input.span-15, textarea.span-15, input.span-16, textarea.span-16, input.span-17, textarea.span-17, input.span-18, textarea.span-18, input.span-19, textarea.span-19, input.span-20, textarea.span-20, input.span-21, textarea.span-21, input.span-22, textarea.span-22, input.span-23, textarea.span-23, input.span-24, textarea.span-24 {
-  border-left-width: 1px;
-  border-right-width: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 input.span-1, textarea.span-1 { width: 27px; }
@@ -579,16 +579,16 @@ input.span-24, textarea.span-24 { width: 1108px; }
 
 /* Border on right hand side of a column. */
 .border {
-  padding-right: 3px;
-  margin-right: 4px;
-  border-right: 1px solid #ddd;
+	padding-right: 3px;
+	margin-right: 4px;
+	border-right: 1px solid #ddd;
 }
 
 /* Border with more whitespace, spans one column. */
 div.colborder {
-  padding-right: 26px;
-  margin-right: 28px;
-  border-right: 1px solid #eee;
+	padding-right: 26px;
+	margin-right: 28px;
+	border-right: 1px solid #eee;
 }
 
 
@@ -663,63 +663,63 @@ div.append-bottom, .append-bottom {
 
 /* Use a .box to create a padded box inside a column.  */
 .box {
-  padding: 1.5em;
-  margin-bottom: 1.5em;
-  background: #e5eCf9;
+	padding: 1.5em;
+	margin-bottom: 1.5em;
+	background: #e5eCf9;
 }
 
 /* Use this to create a horizontal ruler across a column. */
 hr {
-  background: #ddd;
-  color: #ddd;
-  clear: both;
-  float: none;
-  width: 100%;
-  height: 1px;
-  margin: 0 0 1.4em;
-  border: none;
+	background: #ddd;
+	color: #ddd;
+	clear: both;
+	float: none;
+	width: 100%;
+	height: 1px;
+	margin: 0 0 1.4em;
+	border: none;
 }
 hr.space {
-  background: #fff;
-  color: #fff;
-  visibility: hidden;
+	background: #fff;
+	color: #fff;
+	visibility: hidden;
 }
 
 
 /* Clearing floats without extra markup
-   Based on How To Clear Floats Without Structural Markup by PiE
-   [http://www.positioniseverything.net/easyclearing.html] */
+Based on How To Clear Floats Without Structural Markup by PiE
+[http://www.positioniseverything.net/easyclearing.html] */
 
 .clearfix:after, .container:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-  overflow:hidden;
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	overflow:hidden;
 }
 .clearfix, .container {display: block;}
 
 /* Regular clearing
-   apply to column that should drop below previous ones. */
+apply to column that should drop below previous ones. */
 
 .clear { clear:both; }
 /* --------------------------------------------------------------
 
-   forms.css
-   * Sets up some default styling for forms
-   * Gives you classes to enhance your forms
+forms.css
+* Sets up some default styling for forms
+* Gives you classes to enhance your forms
 
-   Usage:
-   * For text fields, use class .title or .text
-   * For inline forms, use .inline (even when using columns)
+Usage:
+* For text fields, use class .title or .text
+* For inline forms, use .inline (even when using columns)
 
 -------------------------------------------------------------- */
 
 /* 
-	A special hack is included for IE8 since it does not apply padding 
-	correctly on fieldsets
- */ 
+A special hack is included for IE8 since it does not apply padding 
+correctly on fieldsets
+*/ 
 label       { font-weight: bold; }
 fieldset    { padding:0 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
 legend      { font-weight: bold; font-size:1.2em; margin-top:-0.2em; margin-bottom:1em; }
@@ -731,28 +731,28 @@ legend, #IE8#HACK { margin-top:0; margin-bottom:0; }
 -------------------------------------------------------------- */
 
 /* 
-  Attribute selectors are used to differentiate the different types 
-  of input elements, but to support old browsers, you will have to 
-  add classes for each one. ".title" simply creates a large text  
-  field, this is purely for looks.
- */
+Attribute selectors are used to differentiate the different types 
+of input elements, but to support old browsers, you will have to 
+add classes for each one. ".title" simply creates a large text  
+field, this is purely for looks.
+*/
 input[type=text], input[type=password],
 input.text, input.title,
 textarea {
-  background-color:#fff;
-  border:1px solid #bbb;
+	background-color:#fff;
+	border:1px solid #bbb;
 }
 input[type=text]:focus, input[type=password]:focus,
 input.text:focus, input.title:focus,
 textarea:focus {
-  border-color:#666;
+	border-color:#666;
 }
 select { background-color:#fff; border-width:1px; border-style:solid; }
 
 input[type=text], input[type=password],
 input.text, input.title,
 textarea, select {
-  margin:0.5em 0;
+	margin:0.5em 0;
 }
 
 input.text,
@@ -761,9 +761,9 @@ input.title   { font-size:1.5em; }
 textarea      { width: 390px; height: 250px; padding:5px; }
 
 /* 
-  This is to be used on forms where a variety of elements are 
-  placed side-by-side. Use the p tag to denote a line. 
- */
+This is to be used on forms where a variety of elements are 
+placed side-by-side. Use the p tag to denote a line. 
+*/
 form.inline { line-height:3; }
 form.inline p { margin-bottom:0; }
 

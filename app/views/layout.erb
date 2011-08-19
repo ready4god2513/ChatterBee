@@ -66,6 +66,9 @@
 	</div>
 	<footer id="footer" class="span-24 last">
 		<%= link_to "Privacy Policy", url(:static, :privacy)%>
+		<% if current_user? %>
+			| <%= link_to "signout", url(:auth, :signout)%>
+		<% end %>
 	</footer>
 </div> <!--! end of #container -->
 

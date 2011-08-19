@@ -228,7 +228,7 @@ function handle_errors(error)
 function handle_geolocation_query(position)
 {
 	$.ajax({
-		url: "/convert-location",
+		url: "/auth/location",
 		type: "post",
 		data: "latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude,
 		success: function(message)

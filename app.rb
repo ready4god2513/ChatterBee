@@ -40,11 +40,13 @@ class Jegit < Sinatra::Base
   end
   
   def current_user
-    User.find(session[:user_id])
+    @user ||= User.find(session[:user_id])
   end
-  
+
   def current_user?
+    return true
     !current_user.nil?
   end
+  
   
 end

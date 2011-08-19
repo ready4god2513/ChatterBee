@@ -18,7 +18,7 @@ Jegit.controllers :user do
   
   get :signout do
     session.delete(:user_id)
-    redirect to("/auth")
+    redirect to(url(:user, :auth))
   end
   
   post :sign_in do

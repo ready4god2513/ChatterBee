@@ -38,6 +38,13 @@
 			<div id="body" class="span-16 prepend-1 append-1">
 				<%= yield %>
 			</div>
+			<div id="footer-promos" class="span-18 last">
+				<% if is_mobile_device? %>
+					<%= erb "ads/sidebar".to_sym %>
+				<% else %>
+					<%= erb "ads/footer".to_sym %>
+				<% end %>
+			</div>
 		</div>
 		<div class="span-4 last" id="sidebar">
 			<div id="social">
@@ -60,13 +67,6 @@
 			</div>
 			<a href="http://pubnub.com?ref=jegit.com" id="pubnub-referral"><%= image_tag("pubnub.png", :alt => "Powered by Pubnub")%></a>
 		</div>
-	</div>
-	<div id="footer-promos" class="span-18 last">
-		<% if is_mobile_device? %>
-			<%= erb "ads/sidebar".to_sym %>
-		<% else %>
-			<%= erb "ads/footer".to_sym %>
-		<% end %>
 	</div>
 	<footer id="footer" class="span-24 last">
 		<%= link_to "Privacy Policy", url(:static, :privacy)%>

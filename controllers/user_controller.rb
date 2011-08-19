@@ -6,12 +6,8 @@ class Jegit
   end
   
   get "/auth/facebook/callback" do
-    @user = User.create(
-      :name => request.env["omniauth.auth"]["user_info"]["nickname"], 
-      :location => nil, 
-      :token => request.env["omniauth.auth"]["credentials"]["token"],
-      :gender => nil
-    )
+    auth = request.env["omniauth.auth"]
+    @user = User.find_by_name(auth["user_info"]["nickname"]) || User.create_with_omniauth(auth)
 
     session[:user_id] = @user.id
     redirect to("https://apps.facebook.com/jegit-chat/")

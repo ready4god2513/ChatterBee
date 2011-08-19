@@ -1,7 +1,7 @@
 class Jegit
   
   get "/auth/?" do
-    redirect to("/") if current_user
+    redirect to("/") if current_user?
     erb :auth
   end
   
@@ -18,10 +18,7 @@ class Jegit
   end
   
   get "/signout" do
-    redirect to("/auth/") unless current_user
-    
-    current_user.destroy # We don"t need them in the database any longer
-    session.delete(:user)
+    session.delete(:user_id)
     redirect to("/auth")
   end
   

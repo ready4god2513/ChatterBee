@@ -19,6 +19,10 @@ class Room
     "#{Forgery(:name).company_name}-#{Random.new.rand(1..999999)}"
   end
   
+  def self.first_open_room
+    Room.where(:open => true).first(:order => :created_at.desc)
+  end
+  
   def join(user)
     self.users << user
     self.open = open?
@@ -43,6 +47,5 @@ class Room
         "limit"   => 50000
     })
   end
-  
   
 end

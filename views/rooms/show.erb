@@ -1,5 +1,5 @@
 <h2>Room: <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@room.name}" %>"><%= @room.name %></a></h2>
-<h3 id="chatting-as">Chatting as <span><%= @user.name %></span> <% unless @user.approximate_location.nil? %>in <%= @user.approximate_location %><% end %></h3>
+<h3 id="chatting-as">Chatting as <span><%= current_user.name %></span> <% unless current_user.approximate_location.nil? %>in <%= current_user.approximate_location %><% end %></h3>
 
 <ul id="manuscript"></ul>
 
@@ -10,9 +10,9 @@
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
 	var channel = "<%= @room.name %>";
-	var user = "<%= @user.name %>";
+	var user = "<%= current_user.name %>";
 </script>
 
 <div id="below-chat-links">
-	<a href="/leave/<%= @room.id %>">Leave the room</a> | <a href="/print/<%= @room.name %>" =target="_blank">Great conversation?  Print it.</a>
+	<a href="/room/leave/<%= @room.name %>">Leave the room</a> | <a href="/room/print/<%= @room.name %>" target="_blank">Great conversation?  Print it.</a>
 </div>

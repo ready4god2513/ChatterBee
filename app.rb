@@ -30,6 +30,16 @@ Dir.glob("models/*.rb").each { |r| require_relative r }
 
 class Jegit < Sinatra::Base
   
+  before do
+    redirect to("/auth/") if auth_needed?
+    
+    @pubkey = "pub-32d1b09f-63b7-4015-8e59-bd603a2ec66e"
+    @subkey = "sub-7e2e745c-c38c-11e0-a0a5-53ec83638759"
+    @secretkey = "sec-a58d32c9-868c-4ab6-b70e-6555bee4758e"
+    
+    @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
+  end
+  
   not_found do
     erb "static/404".to_sym
   end
@@ -39,8 +49,17 @@ class Jegit < Sinatra::Base
   end
   
   
+  def auth_needed?
+    return false if current_user?
+    request.path_info =~ /room/
+  end
+  
   def current_user
     User.find(session[:user_id])
+  end
+  
+  def current_user?
+    !current_user.nil?
   end
   
 end

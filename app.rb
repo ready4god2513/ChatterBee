@@ -39,11 +39,6 @@ class Jegit < Sinatra::Base
     @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
   end
   
-  def auth_needed?
-    return false if current_user?
-    request.path_info =~ /room/
-  end
-  
   def current_user
     User.find(session[:user_id])
   end

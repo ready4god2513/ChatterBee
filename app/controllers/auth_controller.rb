@@ -1,11 +1,7 @@
-Jegit.controllers :user do
+Jegit.controllers :auth do
   
-  before do
-    redirect to("/") if current_user? && !(request.path_info =~ /signout/)
-  end
-  
-  get :auth do
-    erb "users/auth".to_sym
+  get :index do
+    erb "auth/index".to_sym
   end
   
   get :facebook, :map => "/facebook/callback" do
@@ -18,7 +14,7 @@ Jegit.controllers :user do
   
   get :signout do
     session.delete(:user_id)
-    redirect to(url(:user, :auth))
+    redirect to(url(:auth, :index))
   end
   
   post :sign_in do

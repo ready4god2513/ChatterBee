@@ -1,7 +1,7 @@
 Jegit.controllers :room do
   
   before do
-    redirect to(url(:user, :auth)) unless current_user?
+    redirect to(url(:auth, :index)) unless current_user?
     load_pubnub
   end
   

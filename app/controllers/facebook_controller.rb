@@ -6,7 +6,7 @@ Jegit.controllers :facebook do
   end
   
   post :chat do
-    erb :facebook_auth
+    erb "auth/facebook".to_sym
   end
   
 end

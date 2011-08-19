@@ -6,7 +6,7 @@
 	
 	<h3>Don't have a facebook account?</h3>
 	<h4>Sign up below:</h4>
-	<% form_tag url(url(:user, :sign_in)) do %>
+	<% form_tag url(url(:auth, :sign_in)) do %>
 		<%= hidden_field_tag(:location)%>
 		
 		<div class="fields">

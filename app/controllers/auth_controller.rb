@@ -4,7 +4,7 @@ Jegit.controllers :auth do
     erb "auth/index".to_sym
   end
   
-  get :facebook, :map => "/facebook/callback" do
+  get :facebook, :map => "/auth/facebook/callback" do
     auth = request.env["omniauth.auth"]
     @user = User.find_by_name(auth["user_info"]["nickname"]) || User.create_with_omniauth(auth)
 

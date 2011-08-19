@@ -1,4 +1,4 @@
-<h2>Room: <a href="<%= "#{request.scheme}://#{request.host}:#{request.port}/room/#{@room.name}" %>"><%= @room.name %></a></h2>
+<h2>Room: <%= link_to @room.name, url(:room, :show, :id => @room.id)%></h2>
 <h3 id="chatting-as">Chatting as <span><%= current_user.name %></span> <% unless current_user.approximate_location.nil? %>in <%= current_user.approximate_location %><% end %></h3>
 
 <ul id="manuscript"></ul>
@@ -14,5 +14,6 @@
 </script>
 
 <div id="below-chat-links">
-	<a href="/room/leave/<%= @room.name %>">Leave the room</a> | <a href="/room/print/<%= @room.name %>" target="_blank">Great conversation?  Print it.</a>
+	<%= link_to "Leave the room", url(:room, :leave, :id => @room.name, :confirm => "Are you sure?")%> |
+	<%= link_to "Great conversation?  Print it.", url(:room, :print, :id => @room.name)%>
 </div>

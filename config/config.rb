@@ -1,3 +1,16 @@
+require "pubnub"
+require "mongo_mapper"
+require "sass"
+require "erb"
+require "geocoder"
+require "omniauth"
+require "openssl"
+require "openid/store/filesystem"
+require "rack/flash"
+require "rack/timeout"
+require "padrino-helpers"
+require "padrino-core/application/routing"
+
 class Jegit
   
   configure do
@@ -22,8 +35,8 @@ class Jegit
   MongoMapper.connection = Mongo::Connection.new("localhost", 27017, :pool_size => 5, :timeout => 5)
   MongoMapper.database = "jegit"
   
-  helpers Sinatra::UsersHelper
-  helpers Sinatra::ViewsHelper
+  register Padrino::Helpers
+  register Padrino::Routing
   
   
   helpers do

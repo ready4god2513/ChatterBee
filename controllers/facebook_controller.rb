@@ -1,11 +1,12 @@
-class Jegit
+Jegit.controllers :facebook do
   
-  post "/facebook-chat/?" do
-    if current_user?
-      redirect to("/")
-    else
-      erb :facebook_auth
-    end
+  
+  before do
+    redirect to("/") if current_user?
+  end
+  
+  post :chat do
+    erb :facebook_auth
   end
   
 end

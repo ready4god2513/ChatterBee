@@ -21,17 +21,17 @@
     <meta property="fb:admins" content="1439910669"/>
     <meta property="og:description" content="Who said you shouldn't talk to strangers?  Jegit allows you to talk to strangers like never before.  Check it out.  It's free!  Powered by pubnub." />
 	
-	<link rel="stylesheet" href="/style.css">
-	<link rel="stylesheet" href="/flex.css" media="(max-width: 1100px)">
+	<%= stylesheet_link_tag "style" %>
+	<%= stylesheet_link_tag "flex", :media => "(max-width: 1100px)" %>
 	
 	<link href="http://fonts.googleapis.com/css?family=Permanent+Marker:regular|Jura:300,400,500,60&v1" rel="stylesheet" type="text/css">
-	<script src="/javascripts/libs/modernizr-2.0.6.min.js"></script>
+	<%= javascript_include_tag "libs/modernizr-2.0.6.min" %>
 </head>
 <body>
 
 <div class="container">
 	<header class="span-24 last">
-		<h1 class="logo span-12"><a href="/">jegit. <span>chat freely.</span></a></h1>
+		<h1 class="logo span-12"><%= link_to "jegit. <span>chat freely.</span>", url("/")%></h1>
 	</header>
 	<div id="main" role="main" class="span-24 last">
 		<div class="span-18 append-1">
@@ -58,25 +58,21 @@
 			<div id="sidebar-promos">
 				<%= erb "ads/sidebar".to_sym %>
 			</div>
-			<a href="http://pubnub.com?ref=jegit.com" id="pubnub-referral"><img src="/pubnub.png" alt="Powered by Pubnub"/></a>
+			<a href="http://pubnub.com?ref=jegit.com" id="pubnub-referral"><%= image_tag("pubnub.png", :alt => "Powered by Pubnub")%></a>
 		</div>
 	</div>
 	<div id="footer-promos" class="span-18 last">
 		<%= erb "ads/footer".to_sym %>
 	</div>
 	<footer id="footer" class="span-24 last">
-		<a href="/privacy">Privacy Policy</a>
+		<%= link_to "Privacy Policy", url(:static, :privacy)%>
 	</footer>
 </div> <!--! end of #container -->
 
 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=261061570588802&amp;xfbml=1"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-<!-- scripts concatenated and minified via ant build script-->
-<script src="/javascripts/plugins.js"></script>
-<script src="/javascripts/application.js"></script>
-<!-- end scripts-->
+<%= javascript_include_tag "plugins", "application" %>
 
 <script>
 	var _gaq=[['_setAccount','UA-19606493-6'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID

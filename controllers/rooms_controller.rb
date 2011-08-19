@@ -1,28 +1,35 @@
-class Jegit
+Jegit.controllers :room do
   
-  get "/" do
-    redirect to("/auth/") unless current_user?
-    
-    @room = Room.first_open_room || Room.create(:name => Room.generate_name, :open => true)
-    redirect to("/room/#{@room.name}")
+  before do
+    redirect to(url(:user, :auth)) unless current_user?
+    load_pubnub
   end
   
-  get "/room/:name" do |name|
-    load_room(name)
+  
+  get :index, :map => "/" do
+    @room = Room.first_open_room || Room.create(:name => Room.generate_name, :open => true)
+    redirect to(url(:room, :show, :id => @room.id))
+  end
+  
+  
+  get :show, :with => :id do
+    load_room(id)
     @room.join(current_user)
     erb "rooms/show".to_sym
   end
   
-  get "/room/print/:name" do |name|
-    load_room(name)
+  
+  get :print, :with => :id do
+    load_room(id)
     @messages = @room.history(@pubnub)
     
     attachment "jegit-archive-#{name}.html"
     erb "rooms/print".to_sym, :layout => false
   end
   
-  get "/room/leave/:name" do |name|
-    load_room(name)
+  
+  get :leave, :with => :id do
+    load_room(id)
     
     @pubnub.publish({
       "channel" => @room.name,
@@ -38,8 +45,8 @@ class Jegit
     redirect to("/")
   end
   
-  def load_room(name)
-    @room = Room.find_by_name(name)
+  def load_room(id)
+    @room = Room.find(id)
     redirect to("/") if @room.nil?
   end
   

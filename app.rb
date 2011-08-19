@@ -44,9 +44,10 @@ class Jegit < Sinatra::Base
     erb "static/404".to_sym
   end
   
-  # error do
-  #   erb "static/error".to_sym
-  # end
+  error do
+    @error = env['sinatra.error']
+    erb "static/error".to_sym
+  end
   
   
   def auth_needed?

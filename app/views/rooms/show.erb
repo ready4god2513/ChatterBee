@@ -1,4 +1,4 @@
-<h2>Room: <%= link_to @room.name, url(:room, :show, :id => @room.id)%></h2>
+<h2>Room: <%= link_to @room.name, url(:room, :show, :id => @room.to_param)%></h2>
 <h3 id="chatting-as">Chatting as <span><%= current_user.name %></span> <% unless current_user.approximate_location.nil? %>in <%= current_user.approximate_location %><% end %></h3>
 
 <ul id="manuscript"></ul>
@@ -9,11 +9,11 @@
 <div pub-key="<%= @pubkey %>" sub-key="<%= @subkey %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 <script>
-	var channel = "<%= @room.name %>";
+	var channel = "<%= @room.to_param %>";
 	var user = "<%= current_user.name %>";
 </script>
 
 <div id="below-chat-links">
-	<%= link_to "Leave the room", url(:room, :leave, :id => @room.name, :confirm => "Are you sure?")%> |
-	<%= link_to "Great conversation?  Print it.", url(:room, :print, :id => @room.name)%>
+	<%= link_to "Leave the room", url(:room, :leave, :id => @room.to_param), :confirm => "Are you sure?"%> |
+	<%= link_to "Great conversation?  Print it.", url(:room, :print, :id => @room.to_param), :target => "_blank"%>
 </div>

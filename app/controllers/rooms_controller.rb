@@ -7,32 +7,32 @@ Jegit.controllers :room do
   
   
   get :index, :map => "/" do
-    @room = Room.first_open_room || Room.create(:name => Room.generate_name, :open => true)
-    redirect to(url(:room, :show, :id => @room.id))
+    @room = Room.first_open_room || Room.generate
+    redirect to(url(:room, :show, :id => @room.to_param))
   end
   
   
   get :show, :with => :id do
-    load_room(id)
+    load_room(params[:id])
     @room.join(current_user)
     erb "rooms/show".to_sym
   end
   
   
   get :print, :with => :id do
-    load_room(id)
+    load_room(params[:id])
     @messages = @room.history(@pubnub)
     
-    attachment "jegit-archive-#{name}.html"
+    attachment "jegit-archive-#{params[:id]}.html"
     erb "rooms/print".to_sym, :layout => false
   end
   
   
   get :leave, :with => :id do
-    load_room(id)
+    load_room(params[:id])
     
     @pubnub.publish({
-      "channel" => @room.name,
+      "channel" => @room.to_param,
       "message" => {
         "message" => "has left the chat.",
         "status" => "left",
@@ -44,6 +44,11 @@ Jegit.controllers :room do
     @room.leave(current_user)
     redirect to("/")
   end
+  
+end
+
+
+class Jegit
   
   def load_room(id)
     @room = Room.find(id)

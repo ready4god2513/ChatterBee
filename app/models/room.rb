@@ -19,6 +19,10 @@ class Room
     "#{Forgery(:name).company_name}-#{Random.new.rand(1..999999)}"
   end
   
+  def self.generate
+    Room.create(:name => self.generate_name, :open => true)
+  end
+  
   def self.first_open_room
     Room.where(:open => true).first(:order => :created_at.desc)
   end
@@ -43,7 +47,7 @@ class Room
   
   def history(pubnub)
     pubnub.history({
-        "channel" => self.name,
+        "channel" => self.to_param,
         "limit"   => 50000
     })
   end

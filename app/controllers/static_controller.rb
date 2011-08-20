@@ -6,6 +6,7 @@ Jegit.controllers :static do
   
   get :room, :with => :id do
     load_room(params[:id])
+    load_pubnub
     @messages = @room.history(@pubnub)
     erb "static/room".to_sym
   end

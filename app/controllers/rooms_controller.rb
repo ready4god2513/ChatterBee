@@ -46,13 +46,3 @@ Jegit.controllers :room do
   end
   
 end
-
-
-class Jegit
-  
-  def load_room(id)
-    @room = Room.find(id)
-    redirect to("/") if @room.nil?
-  end
-  
-end

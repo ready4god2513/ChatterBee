@@ -39,6 +39,11 @@ class Jegit < Sinatra::Base
     @pubnub = Pubnub.new(@pubkey, @subkey, @secretkey, false)
   end
   
+  def load_room(id)
+    @room = Room.find(id)
+    redirect to("/") if @room.nil?
+  end
+  
   def current_user
     @user ||= User.find(session[:user_id])
   end

@@ -229,10 +229,6 @@ a
 
 	#sidebar
 	{
-		background:rgba(255, 255, 255, 0.8);
-		border:4px solid #fff;
-		padding-top:20px;
-		padding-bottom:20px;
 		text-align:center;
 
 		#pubnub-referral
@@ -243,6 +239,10 @@ a
 
 		div#social
 		{
+			background:rgba(255, 255, 255, 0.8);
+			border:4px solid #fff;
+			padding-top:20px;
+			padding-bottom:20px;
 			margin-bottom:50px;
 
 			div.row

@@ -22,7 +22,7 @@ class Jegit < Sinatra::Base
   end
   
   error do
-    @error = env['sinatra.error']
+    @error = env["sinatra.error"]
     erb "static/error".to_sym
   end
   

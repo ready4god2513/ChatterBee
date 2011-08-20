@@ -44,7 +44,6 @@ class Jegit < Sinatra::Base
   end
 
   def current_user?
-    return true
     !current_user.nil?
   end
   

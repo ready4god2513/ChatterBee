@@ -15,6 +15,6 @@
 
 <div id="below-chat-links">
 	<%= link_to "Leave the room", url(:room, :leave, :id => @room.to_param), :confirm => "Are you sure?"%> |
-	<%= link_to "Great conversation?  Print it.", url(:room, :print, :id => @room.to_param), :target => "_blank"%> |
+	<%= link_to "Great conversation?  Print it.", url(:static, :print, :id => @room.to_param), :target => "_blank"%> |
 	<%= link_to "Conversation Permalink (share it)", url(:static, :room, :id => @room.to_param), :target => "_blank" %>
 </div>

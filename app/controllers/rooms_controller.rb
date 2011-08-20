@@ -19,15 +19,6 @@ Jegit.controllers :room do
   end
   
   
-  get :print, :with => :id do
-    load_room(params[:id])
-    @messages = @room.history(@pubnub)
-    
-    attachment "jegit-archive-#{params[:id]}.html"
-    erb "rooms/print".to_sym, :layout => false
-  end
-  
-  
   get :leave, :with => :id do
     load_room(params[:id])
     

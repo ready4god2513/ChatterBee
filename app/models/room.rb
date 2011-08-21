@@ -4,7 +4,7 @@ class Room
   
   include MongoMapper::Document
   
-  key :name, String
+  key :name, String, :required => true
   key :open, Boolean
   key :user_ids, Array
   
@@ -28,7 +28,7 @@ class Room
   end
   
   def join(user)
-    self.users << user
+    self.users << user unless self.users.include?(user.to_param)
     self.open = open?
     self.save!
   end

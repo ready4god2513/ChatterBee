@@ -8,7 +8,7 @@ Jegit.controllers :auth do
     auth = request.env["omniauth.auth"]
     @user = User.find_by_name(auth["user_info"]["nickname"]) || User.create_with_omniauth(auth)
 
-    session[:user_id] = @user.id
+    session[:user_id] = current_user.id
     redirect to("https://apps.facebook.com/jegit-chat/")
   end
   
@@ -18,13 +18,10 @@ Jegit.controllers :auth do
   end
   
   post :sign_in do
-    @user = User.create(
-      :name => params[:nickname], 
-      :location => params[:location],
-      :gender => params[:gender]
-    )
+    @user = User.find_or_create_by_name(params[:nickname])
     
-    session[:user_id] = @user.id
+    current_user.update_attributes(:location => params[:location])
+    session[:user_id] = current_user.id
     redirect to("/")
   end
   

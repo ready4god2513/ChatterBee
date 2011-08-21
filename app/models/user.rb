@@ -2,7 +2,7 @@ class User
   
   include MongoMapper::Document
   
-  key :name, String, :unique => true
+  key :name, String, :unique => true, :required => true
   key :location, String
   key :token, String
   timestamps!

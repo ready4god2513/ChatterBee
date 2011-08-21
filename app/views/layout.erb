@@ -36,6 +36,7 @@
 	<div id="main" role="main" class="span-24 last">
 		<div class="span-18 append-1">
 			<div id="body" class="span-16 prepend-1 append-1">
+				<%= flash[:notice] %>
 				<%= yield %>
 			</div>
 			<div id="footer-promos" class="span-18 last">

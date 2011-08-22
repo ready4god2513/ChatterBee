@@ -31,11 +31,26 @@ Jegit.controllers "/api/rooms" do
   
 end
 
+Jegit.controllers :api do
+  
+  post :auth do
+    content_type :json
+    
+    if @user = User.find_or_create_by_name(params[:username])
+      @user.to_json(:only => [:name, :id])
+    else
+      @user.errors.to_json
+    end
+  end
+  
+  
+end
+
 
 class Jegit
   
   def authenticate_api!
-    @user = User.find_or_create_by_name(params[:name]) unless params[:name].nil?
+    @user = User.find(params[:token]) unless params[:token].nil?
     halt 401, {'Content-Type' => 'text/plain'}, '{:error => "Please login"}' unless current_user?
   end
   

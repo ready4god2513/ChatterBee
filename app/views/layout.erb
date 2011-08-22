@@ -19,7 +19,7 @@
     <meta property="og:image" content="http://jegit.com/logo.png"/>
     <meta property="og:site_name" content="jegit"/>
     <meta property="fb:admins" content="1439910669"/>
-    <meta property="og:description" content="Who said you shouldn't talk to strangers?  Jegit allows you to talk to strangers like never before.  Check it out.  It's free!" />
+    <meta property="og:description" content="Who said you shouldn't talk to strangers?  Jegit allows you to talk to strangers like never before.  Check it out.  It's free!  Powered by pubnub." />
 	
 	<%= stylesheet_link_tag "style" %>
 	<%= stylesheet_link_tag "flex", :media => "(max-width: 1100px)" %>
@@ -68,6 +68,7 @@
 			<div id="sidebar-promos">
 				<%= erb "ads/sidebar".to_sym %>
 			</div>
+			<a href="http://pubnub.com?ref=jegit.com" id="pubnub-referral"><%= image_tag("pubnub.png", :alt => "Powered by Pubnub")%></a>
 		</div>
 	</div>
 	<footer id="footer" class="span-24 last">
@@ -79,6 +80,7 @@
 </div> <!--! end of #container -->
 
 <!-- <%= request.url %> -->
+
 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=261061570588802&amp;xfbml=1"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 

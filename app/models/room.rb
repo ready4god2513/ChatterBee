@@ -34,11 +34,9 @@ class Room
   end
   
   def leave(user)
-    self.users.delete(user)
-    if self.users.count < 2 # Get rid of the room if it is now empty
-      self.open = false
-      self.save
-    end
+    self.users.delete_all
+    self.open = false
+    self.save
   end
   
   def open?

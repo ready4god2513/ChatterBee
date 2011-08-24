@@ -8,6 +8,7 @@ describe "App" do
     
     @room = Factory(:room)
     @user = @room.users.first
+    @user2 = Factory(:user, :name => "Melissa Hansen")
   end
   
   
@@ -43,9 +44,22 @@ describe "App" do
   
     it "should be closed with more than 1 user" do
       @room.users.count.should == 1
-      @room.join(Factory(:user, :name => "Melissa Hansen"))
+      @room.join(@user2)
       @room.users.count.should == 2
       @room.open?.should == false
+    end
+    
+    it "should kick everyone out once someone leaves" do
+      @user3 = Factory(:user, :name => "Chris Gratigny")
+      @room.users.count.should == 1
+      @room.join(@user2)
+      @room.users.count.should == 2
+      @room.open?.should == false
+      @room.join(@user3)
+      @room.users.count.should == 3
+      @room.leave(@user2)
+      @room.users.count.should == 0
+      @room.open.should == false
     end
     
   end

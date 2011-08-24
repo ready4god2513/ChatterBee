@@ -36,6 +36,18 @@ describe "App" do
       @room.should_not be_valid
     end
     
+    it "should be open without any users" do
+      @room.users.delete_all
+      @room.open?.should == true
+    end
+  
+    it "should be closed with more than 1 user" do
+      @room.users.count.should == 1
+      @room.join(Factory(:user, :name => "Melissa Hansen"))
+      @room.users.count.should == 2
+      @room.open?.should == false
+    end
+    
   end
   
   

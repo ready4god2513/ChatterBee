@@ -30,14 +30,19 @@
 <body>
 
 <div class="container">
-	<header class="span-24 last">
-		<h1 class="logo span-12"><%= link_to "jegit. <span>chat freely.</span>", url("/")%></h1>
-	</header>
+	
 	<div id="main" role="main" class="span-24 last">
 		<div class="span-18 append-1">
-			<div id="body" class="span-16 prepend-1 append-1">
-				<%= flash[:notice] %>
-				<%= yield %>
+			<div id="body" class="span-18">
+				<header class="span-16 prepend-1 append-1">
+					<h1 id="logo"><%= link_to "jegit <span>chat freely</span>", url("/")%></h1>
+				</header>
+				
+				<div id="content" class="span-16 prepend-1 append-1">
+					<%= flash[:notice] %>
+					<%= yield %>
+				</div>
+				
 			</div>
 			<div id="footer-promos" class="span-18 last">
 				<% if is_mobile_device? %>

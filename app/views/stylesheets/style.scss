@@ -11,30 +11,7 @@ body
 	background:#EBE9E4;
 	color:#222;
 	font-family:Lekton, serif;
-	margin:0 auto;
-
-	h1
-	{
-		margin:30px 0;
-	}
-
-	h1.logo
-	{
-		text-shadow:#fff 1px 1px 0px;
-
-		span
-		{
-			color:#222;
-			display:block;
-			font-size:0.7em;
-			text-shadow:none;
-		}
-
-		a
-		{
-			color:rgb(80, 180, 220) !important;
-		}
-	}
+	margin:50px auto;
 }
 
 a
@@ -46,15 +23,46 @@ a
 #main
 {
 	color:#222;
-	margin-bottom:20px;
+	margin:20px auto;
 
 	#body
 	{
 		background-color:#fff;
 		border:1px solid #D7D6D3;
 		@include shadow;
-		padding-top:20px;
-		padding-bottom:20px;
+		
+		header
+		{
+			background:rgb(80, 180, 220) !important;
+			
+			h1
+			{
+				margin:30px 0;
+			}
+
+			h1#logo
+			{
+				text-shadow:#222 1px 1px 0px;
+
+				span
+				{
+					color:#222;
+					font-size:0.7em;
+					text-shadow:none;
+				}
+
+				a
+				{
+					color:#fff;
+				}
+			}
+		}
+		
+		#content
+		{
+			padding-top:20px;
+			padding-bottom:20px;
+		}
 
 		#auth-options
 		{

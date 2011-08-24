@@ -57,7 +57,7 @@ class Jegit
       end
       
       define_method "is_mobile_device?" do
-        return request.user_agent =~ /MOBILE_USER_AGENTS/
+        return request.user_agent.downcase =~ /MOBILE_USER_AGENTS/
       end
       
     end

@@ -42,14 +42,6 @@ class Jegit
   register Padrino::Routing
   
   
-  MOBILE_USER_AGENTS =  'palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|' +
-                            'audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|' +
-                            'x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|' +
-                            'pdxgw|netfront|xiino|vodafone|portalmmm|sagem|mot-|sie-|ipod|up\\.b|' +
-                            'webos|amoi|novarra|cdm|alcatel|pocket|ipad|iphone|mobileexplorer|' +
-                            'mobile'
-  
-  
   helpers do
     [:development, :production, :test].each do |environment|
       define_method "#{environment.to_s}?" do
@@ -57,7 +49,7 @@ class Jegit
       end
       
       define_method "is_mobile_device?" do
-        return request.user_agent.downcase =~ /MOBILE_USER_AGENTS/
+        return request.user_agent.downcase =~ /palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|pdxgw|netfront|xiino|vodafone|portalmmm|sagem|mot-|sie-|ipod|up\\.b|webos|amoi|novarra|cdm|alcatel|pocket|ipad|iphone|mobileexplorer|mobile/
       end
       
     end

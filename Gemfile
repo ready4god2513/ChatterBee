@@ -14,7 +14,7 @@ gem "bourbon"
 gem "omniauth", ">= 0.2.6"
 gem "rack-flash"
 gem "rack-timeout"
-gem "fb_graph"
+gem "koala"
 gem "padrino"
 
 group :development do

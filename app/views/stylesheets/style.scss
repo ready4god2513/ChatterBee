@@ -2,8 +2,7 @@
 
 body
 {
-	background:url(/images/light-tile.gif) repeat;
-	border-top:6px solid #0d98ba;
+	background:#EBE9E4;
 	color:#222;
 	font-family:'Jura', serif;
 	margin:0 auto;
@@ -47,8 +46,8 @@ a
 
 	#body
 	{
-		background:rgba(255, 255, 255, 0.8);
-		border:4px solid #fff;
+		background-color:#fff;
+		border:1px solid #D7D6D3;
 		padding-top:20px;
 		padding-bottom:20px;
 
@@ -84,23 +83,16 @@ a
 
 					input[type=submit]
 					{
-						background-color:#a5b8da;
-						background-image:-webkit-gradient(linear, left top, left bottom, from(#a5b8da), to(#7089b3));
-						/* Saf4+, Chrome */
-						background-image:-webkit-linear-gradient(top, #a5b8da, #7089b3);
-						background-image:-moz-linear-gradient(top, #a5b8da, #7089b3);
-						background-image:-ms-linear-gradient(top, #a5b8da, #7089b3);
-						background-image:-o-linear-gradient(top, #a5b8da, #7089b3);
-						background-image:linear-gradient(top, #a5b8da, #7089b3);
+						background-color:rgb(80, 180, 220);
 						border-top:1px solid #758fba;
 						border-right:1px solid #6c84ab;
 						border-bottom:1px solid #5c6f91;
 						border-left:1px solid #6c84ab;
-						-webkit-border-radius:18px;
-						-moz-border-radius:18px;
-						-ms-border-radius:18px;
-						-o-border-radius:18px;
-						border-radius:18px;
+						-webkit-border-radius:5px;
+						-moz-border-radius:5px;
+						-ms-border-radius:5px;
+						-o-border-radius:5px;
+						border-radius:5px;
 						-webkit-box-shadow:inset 0 1px 0 0 #aec3e5;
 						-moz-box-shadow:inset 0 1px 0 0 #aec3e5;
 						-ms-box-shadow:inset 0 1px 0 0 #aec3e5;
@@ -118,14 +110,7 @@ a
 
 					input[type=submit]:hover 
 					{
-						background-color:#9badcc;
-						background-image:-webkit-gradient(linear, left top, left bottom, from(#9badcc), to(#687fa6));
-						/* Saf4+, Chrome */
-						background-image:-webkit-linear-gradient(top, #9badcc, #687fa6);
-						background-image:-moz-linear-gradient(top, #9badcc, #687fa6);
-						background-image:-ms-linear-gradient(top, #9badcc, #687fa6);
-						background-image:-o-linear-gradient(top, #9badcc, #687fa6);
-						background-image:linear-gradient(top, #9badcc, #687fa6);
+						background-color:rgb(80, 180, 220);
 						border-top:1px solid #6d86ad;
 						border-right:1px solid #647a9e;
 						border-bottom:1px solid #546685;
@@ -230,6 +215,12 @@ a
 	#sidebar
 	{
 		text-align:center;
+		
+		#sidebar-promos
+		{
+			background:rgba(255, 255, 255, 0.3);
+			padding:20px 0;
+		}
 
 		#pubnub-referral
 		{
@@ -239,8 +230,8 @@ a
 
 		div#social
 		{
-			background:rgba(255, 255, 255, 0.8);
-			border:4px solid #fff;
+			background-color:#fff;
+			border:1px solid #D7D6D3;
 			padding-top:20px;
 			padding-bottom:20px;
 			margin-bottom:50px;
@@ -262,7 +253,8 @@ a
 
 #footer-promos
 {
-	padding-top:20px;
+	background:rgba(255, 255, 255, 0.3);
+	padding:20px 0;
 	text-align:center;
 }
 

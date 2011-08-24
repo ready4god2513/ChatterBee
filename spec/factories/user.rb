@@ -1,8 +1,6 @@
-FactoryGirl.define do
+Factory.define :user do |u|
   
-  factory :user do |u|
-    u.name "Brandon Hansen"
-    u.location "Redding, CA"
-  end
+  u.name "Brandon Hansen"
+  u.location "Redding, CA"
   
 end

@@ -1,9 +1,7 @@
-FactoryGirl.define do
+Factory.define :room do |r|
   
-  factory :room do |r|
-    r.name {"My Random Room - #{Random.new.rand}"}
-    r.open true
-    r.after_create { |room| room.users << Factory(:user)} 
-  end
+  r.name {"My Random Room - #{Random.new.rand}"}
+  r.open true
+  r.after_create { |room| room.users << Factory(:user)}
   
 end

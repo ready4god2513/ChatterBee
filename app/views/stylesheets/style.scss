@@ -1,5 +1,11 @@
 @import "base";
 
+@mixin shadow {
+  -moz-box-shadow: 0 0 5px #ccc;
+  -webkit-box-shadow: 0 0 5px #ccc;
+  box-shadow: 0 0 5px #ccc;
+}
+
 body
 {
 	background:#EBE9E4;
@@ -46,6 +52,7 @@ a
 	{
 		background-color:#fff;
 		border:1px solid #D7D6D3;
+		@include shadow;
 		padding-top:20px;
 		padding-bottom:20px;
 

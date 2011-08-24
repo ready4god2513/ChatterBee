@@ -21,3 +21,10 @@ group :development do
 	gem "capistrano"
 	gem "railsless-deploy"
 end
+
+group :test do
+	gem "rspec", "=2.4.0"
+	gem "rack-test"
+	gem "awesome_print"
+	gem "factory_girl"
+end

@@ -35,7 +35,12 @@
 		<h3>Recent Open Rooms:</h3>
 		<ul>
 			<% Room.recent.each do |room| %>
-				<li><%= link_to room.name, url(:room, :show, :id => room.to_param)%></li>
+				<% if current_user? %>
+					<li><%= link_to room.name, url(:room, :show, :id => room.to_param)%></li>
+				<% else %>
+					<li><%= link_to room.name, url(:static, :room, :id => room.to_param)%></li>
+				<% end %>
+				
 			<% end %>
 		</ul>
 	</header>

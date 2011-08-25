@@ -38,7 +38,6 @@ class Room
   end
   
   def leave(user)
-    self.users.delete_all
     self.open = false
     self.save
   end

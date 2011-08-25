@@ -98,10 +98,9 @@ var chatter = new function()
 	
 	self.parseMessage = function(message)
 	{
-		
 		message.message = message.message.replace(/<.*?>/g, '');
 		console.log("Parsing message: " + message + " with a status of: " + status);
-		self.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message);
+		self.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message, message.message);
 	},
 	
 	
@@ -143,23 +142,23 @@ var chatroom = new function()
 	},
 	
 	
-	self.addLine = function(line)
+	self.addLine = function(line, raw)
 	{
 		self.elem.append("<li>" + line + "</li>");
 		self.scrollDown();
-		
-		if(self.allowDesktopNotifications)
+		if(self.allowDesktopNotifications && !document.hasFocus())
 		{
 			PUBNUB.notify({
 			    image : "http://jegit.com/images/logo.png",
 			    title : "New Jegit Message",
-			    body  : line
+			    body  : raw
 			});
 		}
 	},
 	
 	self.enableDesktop = function()
 	{
+		self.allowDesktopNotifications = PUBNUB.notify.ready();
 		PUBNUB.notify.enable(function(){
 			self.allowDesktopNotifications = PUBNUB.notify.ready();
 		});

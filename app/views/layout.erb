@@ -31,6 +31,15 @@
 
 <div class="container">
 	
+	<header id="open-rooms">
+		<h3>Recent Open Rooms:</h3>
+		<ul>
+			<% Room.recent.each do |room| %>
+				<li><%= link_to room.name, url(:room, :show, :id => room.to_param)%></li>
+			<% end %>
+		</ul>
+	</header>
+	
 	<div id="main" role="main" class="span-24 last">
 		<div class="span-18 append-1">
 			<div id="body" class="span-18">

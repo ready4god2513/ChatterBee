@@ -27,6 +27,10 @@ class Room
     Room.where(:open => true).first(:order => :created_at.desc)
   end
   
+  def self.recent
+      Room.sort(:created_at.desc).limit(5)
+  end
+  
   def join(user)
     self.users << user unless self.users.include?(user.to_param)
     self.open = open?

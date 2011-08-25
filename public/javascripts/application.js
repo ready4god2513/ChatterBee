@@ -22,9 +22,7 @@ var chatter = new function()
 	self.joinRoom = function(room)
 	{
 		self.chatroom = room;
-		
-		console.log("Joined Room: " + self.chatroom + " on channel: " + self.channel);
-		
+				
 		PUBNUB.subscribe({
 		    channel  : self.channel,
 		    callback : function(message) 
@@ -36,7 +34,10 @@ var chatter = new function()
 		
 		
 		self.loadHistory();
-		self.postMessage("has joined the room.", "joined");
+		
+		// We need to register the user in the room.  We may make another room
+		// to do this and just keep that list up to date unless we can get a list of
+		// all of the currently subscribed users
 	},
 	
 	
@@ -44,7 +45,10 @@ var chatter = new function()
 	{
 		console.log("Leaving room: " + self.chatroom + " on channel: " + self.channel);
 		PUBNUB.unsubscribe({ channel : self.channel });
-		return self.postMessage("has left the chat.", "left");
+		
+		// We need to unregister the user from the room.  We may make another room
+		// to do this and just keep that list up to date unless we can get a list of
+		// all of the currently subscribed users
 	},
 	
 	

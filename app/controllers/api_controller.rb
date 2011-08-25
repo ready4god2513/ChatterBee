@@ -15,17 +15,6 @@ Jegit.controllers "/api/rooms" do
 
   get :leave, :with => :id do
     load_room(params[:id])
-
-    @pubnub.publish({
-      "channel" => @room.to_param,
-      "message" => {
-        "message" => "has left the chat.",
-        "status" => "left",
-        "user" => current_user.name,
-        "uuid" => 10
-      }
-    })
-
     @room.leave(current_user)
   end
   

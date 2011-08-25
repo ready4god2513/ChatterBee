@@ -28,7 +28,7 @@ class Room
   end
   
   def self.recent
-      Room.sort(:created_at.desc).limit(5)
+    Room.where(:open => true).sort(:created_at.desc).limit(5)
   end
   
   def join(user)

@@ -32,6 +32,7 @@
 <div class="container">
 	
 	<header id="open-rooms">
+		<% if Room.recent.count > 0 %>
 		<h3>Recent Open Rooms:</h3>
 		<ul>
 			<% Room.recent.each do |room| %>
@@ -43,6 +44,7 @@
 				
 			<% end %>
 		</ul>
+		<% end %>
 	</header>
 	
 	<div id="main" role="main" class="span-24 last">

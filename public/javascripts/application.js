@@ -101,20 +101,7 @@ var chatter = new function()
 		
 		message.message = message.message.replace(/<.*?>/g, '');
 		console.log("Parsing message: " + message + " with a status of: " + status);
-		
-		if(message.status == "left")
-		{
-			self.chatroom.addLine("<span class='left-chat'>" + message.user + " " + message.message + "</span>");
-		}
-		else if(message.status == "joined")
-		{
-			self.chatroom.addLine("<span class='joined'>" + message.user + " " + message.message + "</span>");
-		}
-		else
-		{
-			self.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message);
-		}
-		
+		self.chatroom.addLine("<strong class='user'>" + message.user + "</strong> " + message.message);
 	},
 	
 	
@@ -138,6 +125,8 @@ var chatter = new function()
 		});
 	};
 	
+	
+	
 }
 
 
@@ -145,18 +134,35 @@ var chatroom = new function()
 {
 	var self = this;
 	self.elem = null;
+	self.allowDesktopNotifications = false;
 	
 	
 	self.setRoom = function(elem)
 	{
 		self.elem = elem;
-	}
+	},
 	
 	
 	self.addLine = function(line)
 	{
 		self.elem.append("<li>" + line + "</li>");
 		self.scrollDown();
+		
+		if(self.allowDesktopNotifications)
+		{
+			PUBNUB.notify({
+			    image : "http://jegit.com/images/logo.png",
+			    title : "New Jegit Message",
+			    body  : line
+			});
+		}
+	},
+	
+	self.enableDesktop = function()
+	{
+		PUBNUB.notify.enable(function(){
+			self.allowDesktopNotifications = PUBNUB.notify.ready();
+		});
 	},
 	
 	
@@ -187,6 +193,7 @@ function Guid()
 if(typeof(user) != "undefined")
 {
 	chatroom.setRoom($("#manuscript"));
+	chatroom.enableDesktop();
 	chatter.setUser(user);
 	chatter.setChannel(channel);
 	chatter.joinRoom(chatroom);

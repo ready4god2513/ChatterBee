@@ -8,7 +8,7 @@
 <div channel-name=notifications-channel segregate-notifications-by-page=false id=desktop-notifications-config
 ></div>
 <div pub-key="<%= @pubkey %>" sub-key="<%= @subkey %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
-<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+<script src="https://pubnub.s3.amazonaws.com/pubnub-3.1.min.js"></script>
 <script src="http://www.pubnub.com/static/html5-desktop-notification-broadcasting.js"></script>
 <script>
 	var channel = "<%= @room.to_param %>";

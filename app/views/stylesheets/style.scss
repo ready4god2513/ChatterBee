@@ -8,7 +8,7 @@
 
 body
 {
-	background:#EBE9E4;
+	background:url(/images/texture.png) center center repeat #EBE9E4;
 	color:#222;
 	font-family:Actor, serif;
 	margin:50px auto;
@@ -72,12 +72,13 @@ header#open-rooms
 
 			h1#logo
 			{
-				text-shadow:#222 1px 1px 0px;
+				font-size:3em;
+				text-shadow:0 1px 0 #222;
 
 				span
 				{
 					color:#222;
-					font-size:0.7em;
+					font-size:0.4em;
 					text-shadow:none;
 				}
 

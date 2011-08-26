@@ -201,14 +201,6 @@ if(typeof(user) != "undefined")
 		}
 	});
 }
-
-
-
-function initiate_geolocation() 
-{  
-    navigator.geolocation.getCurrentPosition(handle_geolocation_query, handle_errors);  
-}  
-
 function handle_errors(error)  
 {  
     switch(error.code)  
@@ -225,24 +217,7 @@ function handle_errors(error)
         default: console.log("unknown error");  
         break;  
     }  
-}  
-
-function handle_geolocation_query(position)
-{
-	$.ajax({
-		url: "/auth/location",
-		type: "post",
-		data: "latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude,
-		success: function(message)
-		{
-			$("#location").val(message);
-		}
-	});
 }
-
-$(function(){
-	initiate_geolocation();
-});
 
 
 window.onbeforeunload = function(e)

@@ -19,18 +19,8 @@ Jegit.controllers :auth do
   
   post :sign_in do
     @user = User.find_or_create_by_name(params[:nickname])
-    
-    current_user.update_attributes(:location => params[:location])
     session[:user_id] = current_user.id
     redirect to("/")
-  end
-  
-  post :location do
-    addresses = Geocoder.search("40.586539,-122.391675")
-    location = "#{addresses.first.city}, #{addresses.first.state}, #{addresses.first.country}"
-    current_user.update_location(location) if current_user
-    
-    location
   end
   
 end

@@ -146,14 +146,6 @@ var chatroom = new function()
 	{
 		self.elem.append("<li>" + line + "</li>");
 		self.scrollDown();
-		if(self.allowDesktopNotifications && !document.hasFocus())
-		{
-			PUBNUB.notify({
-			    image : "http://jegit.com/images/logo.png",
-			    title : "New Jegit Message",
-			    body  : raw
-			});
-		}
 	},
 	
 	self.enableDesktop = function()

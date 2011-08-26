@@ -1,5 +1,5 @@
 <h2>Room: <%= link_to @room.name, url(:room, :show, :id => @room.to_param)%></h2>
-<h3 id="chatting-as">Chatting as <span><%= current_user.name %></span> <% unless current_user.approximate_location.nil? %>in <%= current_user.approximate_location %><% end %></h3>
+<h3 id="chatting-as">Chatting as <span><%= current_user.name %></span></h3>
 
 <ul id="manuscript"></ul>
 

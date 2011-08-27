@@ -5,6 +5,7 @@ var chatter = new function()
 	self.chatroom = null;
 	self.user = null;
 	self.channel = null;
+	self.inroom = false;
 	
 	
 	self.setUser = function(user)
@@ -16,6 +17,12 @@ var chatter = new function()
 	self.setChannel = function(channel)
 	{
 		self.channel = channel;
+	},
+	
+	
+	self.inRoom = function()
+	{
+		return self.inroom;
 	},
 	
 	
@@ -34,6 +41,7 @@ var chatter = new function()
 		
 		
 		self.loadHistory();
+		self.inroom = true;
 		
 		// We need to register the user in the room.  We may make another room
 		// to do this and just keep that list up to date unless we can get a list of
@@ -49,6 +57,15 @@ var chatter = new function()
 		// We need to unregister the user from the room.  We may make another room
 		// to do this and just keep that list up to date unless we can get a list of
 		// all of the currently subscribed users
+		$.ajax({
+			url : "/rooms/leave/" + self.channel,
+			type: GET,
+			async: false,
+			success: function()
+			{
+				self.inroom = false;
+			}
+		})
 	},
 	
 	
@@ -200,7 +217,19 @@ if(typeof(user) != "undefined")
 			say.val("");
 		}
 	});
+	
+	window.onbeforeunload = function(e)
+	{
+
+		while(chatter.inRoom())
+		{
+			chatter.leaveRoom();
+		}
+
+		return chatter.inRoom();
+	}
 }
+
 function handle_errors(error)  
 {  
     switch(error.code)  
@@ -217,10 +246,4 @@ function handle_errors(error)
         default: console.log("unknown error");  
         break;  
     }  
-}
-
-
-window.onbeforeunload = function(e)
-{
-	return chatter.leaveRoom();
 }

@@ -20,3 +20,14 @@
 	<%= link_to "Great conversation?  Print it.", url(:static, :print, :id => @room.to_param), :target => "_blank"%> |
 	<%= link_to "Conversation Permalink (share it)", url(:static, :room, :id => @room.to_param), :target => "_blank" %>
 </div>
+
+<% content_for(:sidebar) do %>
+	<div id="chatters">
+		<h3>In this Room:</h3>
+		<ul>
+			<% @room.users.each do |u| %>
+				<li><%= u.name %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

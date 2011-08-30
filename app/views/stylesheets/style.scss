@@ -280,6 +280,36 @@ header#open-rooms
 			display:block;
 			margin:20px 0;
 		}
+		
+		div#chatters
+		{
+			background:rgba(255, 255, 255, 0.3);
+			padding:20px 10px;
+			margin-bottom:50px;
+			text-align:left;
+			
+			h3
+			{
+				color:#BA1C67;
+				margin:0;
+			}
+			
+			ul
+			{
+				
+				margin:0;
+				padding:0;
+				
+				li
+				{
+					color:#333;
+					display:block;
+					list-style:none;
+					margin:0;
+					padding:5px;
+				}
+			}
+		}
 
 		div#social
 		{

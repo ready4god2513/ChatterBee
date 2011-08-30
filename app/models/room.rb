@@ -12,6 +12,7 @@ class Room
   timestamps!
   
   Room.ensure_index(:name)
+  Room.ensure_index(:created_at)
   Room.ensure_index(:open)
   
   
@@ -24,11 +25,11 @@ class Room
   end
   
   def self.first_open_room
-    Room.where(:open => true).first(:order => :created_at.desc)
+    Room.recent.where(:open => true).first
   end
   
   def self.recent
-    Room.where(:open => true).sort(:created_at.desc).limit(5)
+    Room.where(:updated_at => {'$gte' => 30.seconds.ago}).sort(:created_at.desc).limit(5)
   end
   
   def join(user)

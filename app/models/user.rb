@@ -7,6 +7,8 @@ class User
   key :token, String
   timestamps!
   
+  before_save :cleanup_name
+  
   
   def self.create_with_omniauth(auth)
     User.create(
@@ -24,6 +26,11 @@ class User
   def update_location(loc)
     self.location = loc
     self.save
+  end
+  
+  
+  def cleanup_name
+    self.name = name.gsub(/[^0-9a-z]/i, '')
   end
   
 end

@@ -33,7 +33,7 @@
 	
 	<header id="open-rooms">
 		<% if Room.recent.count > 0 %>
-		<h3>Recent Open Rooms:</h3>
+		<h3>Recently Open Rooms:</h3>
 		<ul>
 			<% Room.recent.each do |room| %>
 				<% if current_user? %>

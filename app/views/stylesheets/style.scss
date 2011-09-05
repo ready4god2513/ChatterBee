@@ -1,9 +1,9 @@
 @import "base";
 
-@mixin shadow {
-  -moz-box-shadow: 0 0 5px #ccc;
-  -webkit-box-shadow: 0 0 5px #ccc;
-  box-shadow: 0 0 5px #ccc;
+@mixin shadow($top: 0, $left: 0, $offset: 5px, $color: #ccc) {
+  -moz-box-shadow: $top $left $offset $color;
+  -webkit-box-shadow: $top $left $offset $color;
+  box-shadow: $top $left $offset $color;
 }
 
 body
@@ -58,6 +58,7 @@ header#open-rooms
 	#body
 	{
 		background:rgba(255, 255, 255, 0.9);
+		@include shadow(0, 0, 50px, #fff);
 		
 		header
 		{

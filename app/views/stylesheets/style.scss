@@ -8,7 +8,7 @@
 
 body
 {
-	background:url(/images/black-Linen.png);
+	background:rgba(0, 164, 188, 0.5) url(/images/bg.png) no-repeat center -30px;
 	color:#222;
 	font-family:Actor, serif;
 	margin:50px auto;
@@ -35,7 +35,7 @@ header#open-rooms
 		
 		li
 		{
-			background:rgba(255, 255, 255, 0.3);
+			background:rgba(255, 255, 255, 0.1);
 			display:inline-block;
 			margin:5px 5px 0 0;
 			padding:5px;
@@ -57,7 +57,7 @@ header#open-rooms
 
 	#body
 	{
-		background:rgba(255, 255, 255, 0.8);
+		background:rgba(255, 255, 255, 0.9);
 		
 		header
 		{
@@ -269,7 +269,7 @@ header#open-rooms
 		
 		#sidebar-promos
 		{
-			background:rgba(255, 255, 255, 0.3);
+			background:rgba(255, 255, 255, 0.1);
 			padding:20px 0;
 		}
 
@@ -281,14 +281,14 @@ header#open-rooms
 		
 		div#chatters
 		{
-			background:rgba(255, 255, 255, 0.3);
+			background:rgba(255, 255, 255, 0.1);
 			padding:20px 10px;
 			margin-bottom:50px;
 			text-align:left;
 			
 			h3
 			{
-				color:#BA1C67;
+				color:#FFF100;
 				margin:0;
 			}
 			
@@ -311,7 +311,7 @@ header#open-rooms
 
 		div#social
 		{
-			background:rgba(255, 255, 255, 0.3);
+			background:rgba(255, 255, 255, 0.1);
 			padding-top:20px;
 			padding-bottom:20px;
 			margin-bottom:50px;
@@ -333,7 +333,7 @@ header#open-rooms
 
 #footer-promos
 {
-	background:rgba(255, 255, 255, 0.3);
+	background:rgba(255, 255, 255, 0.1);
 	padding:20px 0;
 	text-align:center;
 }

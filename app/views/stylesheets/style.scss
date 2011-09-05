@@ -57,11 +57,11 @@ header#open-rooms
 
 	#body
 	{
-		background-color:#fff;
+		background:rgba(255, 255, 255, 0.8);
 		
 		header
 		{
-			background:#222 !important;
+			background:rgba(0, 0, 0, 0.8) !important;
 			
 			h1
 			{
@@ -75,7 +75,7 @@ header#open-rooms
 
 				span
 				{
-					color:#222;
+					color:#ccc;
 					font-size:0.4em;
 					text-shadow:none;
 				}

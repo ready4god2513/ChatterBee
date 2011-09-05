@@ -165,14 +165,6 @@ var chatroom = new function()
 		self.scrollDown();
 	},
 	
-	self.enableDesktop = function()
-	{
-		self.allowDesktopNotifications = PUBNUB.notify.ready();
-		PUBNUB.notify.enable(function(){
-			self.allowDesktopNotifications = PUBNUB.notify.ready();
-		});
-	},
-	
 	
 	self.scrollDown = function()
 	{
@@ -201,7 +193,6 @@ function Guid()
 if(typeof(user) != "undefined")
 {
 	chatroom.setRoom($("#manuscript"));
-	chatroom.enableDesktop();
 	chatter.setUser(user);
 	chatter.setChannel(channel);
 	chatter.joinRoom(chatroom);

@@ -1,9 +1,18 @@
 @import "base";
 
-@mixin shadow($top: 0, $left: 0, $offset: 5px, $color: #ccc) {
+@mixin shadow($top: 0, $left: 0, $offset: 5px, $color: #ccc) 
+{
   -moz-box-shadow: $top $left $offset $color;
   -webkit-box-shadow: $top $left $offset $color;
   box-shadow: $top $left $offset $color;
+}
+
+@mixin sidebars
+{
+	background:rgba(255, 255, 255, 0.1);
+	webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 body
@@ -270,7 +279,7 @@ header#open-rooms
 		
 		#sidebar-promos
 		{
-			background:rgba(255, 255, 255, 0.1);
+			@include sidebars;
 			padding:20px 0;
 		}
 
@@ -282,7 +291,7 @@ header#open-rooms
 		
 		div#chatters
 		{
-			background:rgba(255, 255, 255, 0.1);
+			@include sidebars;
 			padding:20px 10px;
 			margin-bottom:50px;
 			text-align:left;
@@ -312,7 +321,7 @@ header#open-rooms
 
 		div#social
 		{
-			background:rgba(255, 255, 255, 0.1);
+			@include sidebars;
 			padding-top:20px;
 			padding-bottom:20px;
 			margin-bottom:50px;

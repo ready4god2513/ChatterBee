@@ -145,18 +145,18 @@ header#open-rooms
 
 					input[type=submit]
 					{
-						background:url(/images/yellow.png);
+						background:#222;
 						-webkit-border-radius:5px;
 						-moz-border-radius:5px;
 						-ms-border-radius:5px;
 						-o-border-radius:5px;
 						border-radius:5px;
 						border:none;
-						color:#222;
+						color:rgb(253, 204, 14);
 						line-height:1;
 						padding:8px 0;
 						text-align:center;
-						text-shadow:0 -1px 1px #fff;
+						text-shadow:0 1px 1px #fff;
 						text-transform:uppercase;
 						width:150px; 
 					}

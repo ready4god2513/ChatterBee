@@ -145,53 +145,19 @@ header#open-rooms
 
 					input[type=submit]
 					{
-						background-color:rgb(80, 180, 220);
-						border-top:1px solid #758fba;
-						border-right:1px solid #6c84ab;
-						border-bottom:1px solid #5c6f91;
-						border-left:1px solid #6c84ab;
+						background:rgba(247, 201, 68, 1.0);
 						-webkit-border-radius:5px;
 						-moz-border-radius:5px;
 						-ms-border-radius:5px;
 						-o-border-radius:5px;
 						border-radius:5px;
-						-webkit-box-shadow:inset 0 1px 0 0 #aec3e5;
-						-moz-box-shadow:inset 0 1px 0 0 #aec3e5;
-						-ms-box-shadow:inset 0 1px 0 0 #aec3e5;
-						-o-box-shadow:inset 0 1px 0 0 #aec3e5;
-						box-shadow:inset 0 1px 0 0 #aec3e5;
-						color:#fff;
+						color:#222;
 						line-height:1;
 						padding:8px 0;
 						text-align:center;
-						text-shadow:0 -1px 1px #64799e;
+						text-shadow:0 -1px 1px #fff;
 						text-transform:uppercase;
 						width:150px; 
-					}
-
-					input[type=submit]:hover 
-					{
-						background-color:rgb(80, 180, 220);
-						border-top:1px solid #6d86ad;
-						border-right:1px solid #647a9e;
-						border-bottom:1px solid #546685;
-						border-left:1px solid #647a9e;
-						-webkit-box-shadow:inset 0 1px 0 0 #a5b9d9;
-						-moz-box-shadow:inset 0 1px 0 0 #a5b9d9;
-						-ms-box-shadow:inset 0 1px 0 0 #a5b9d9;
-						-o-box-shadow:inset 0 1px 0 0 #a5b9d9;
-						box-shadow:inset 0 1px 0 0 #a5b9d9;
-						cursor:pointer; 
-					}
-
-					input[type=submit]:active 
-					{
-						border:1px solid #546685;
-						-webkit-box-shadow:inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
-						-moz-box-shadow:inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
-						-ms-box-shadow:inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
-						-o-box-shadow:inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
-						box-shadow:inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee; 
 					}
 				}
 			}

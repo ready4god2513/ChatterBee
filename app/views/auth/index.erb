@@ -3,19 +3,6 @@
 	<h4>In order to chat with <strong class="logo">jegit</strong> you must first sign in.</h4>
 	
 	<%= link_to image_tag("facebook.png", :alt => "Use your facebook account to sign in"), url("auth/facebook")%>
-	
-	<h3>Don't have a facebook account?</h3>
-	<h4>Sign up below:</h4>
-	<% form_tag url(url(:auth, :sign_in)) do %>		
-		<div class="fields">
-			<%= label_tag(:nickname)%>
-			<%= text_field_tag(:nickname, :required => true, :placeholder => "captain my captain")%>
-		</div>
-		
-		<div class="actions">
-			<%= submit_tag "Start Chatting" %>
-		</div>
-	<% end %>
 </div>
 
 <div class="span-5 prepend-1 last">
